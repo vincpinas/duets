@@ -1,0 +1,77 @@
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
+import { sfx } from "../../Components/Audio/audiofiles";
+import { useAudioContext } from "../../Components/Audio/AudioProvider";
+import { useLanguageContext } from "../../Components/Language/LanguageProvider";
+import "./Join.scss"
+
+function Join() {
+  const navigate = useNavigate();
+  const { dict } = useLanguageContext();
+  const { createSFX } = useAudioContext();
+  const [name, setName] = useState("");
+  const [room, setRoom] = useState("");
+
+  const validate = (val: string, regex: RegExp) => {
+    return regex.test(val)
+  }
+
+  const setter = (setFunc: React.Dispatch<string>, regex: RegExp, e: React.KeyboardEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement
+
+    if (validate(target.value, regex)) setFunc(target.value.toUpperCase()); else setFunc("")
+  }
+
+  const submit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    let dur = 2000
+
+    if (room && name) {
+      createSFX(sfx.drip, { start: 1, duration: dur, volume: 1 })
+      setTimeout(() => {
+        navigate(`/room/${room}`)
+      }, dur)
+    }
+  }
+
+  return (
+    <main className="c-join -page">
+      <div className="c-join__titles -noselect">
+        <h1 className="c-join__title">Duets!</h1>
+        <h4 className="c-join__subTitle">Beta</h4>
+      </div>
+      <form className="c-join__form">
+        <input
+          className="c-join__formField"
+          type="text"
+          placeholder={dict.join.room}
+          onKeyUp={(e) => setter(setRoom, /^[A-Za-z]{2}[0-9]{4}/, e)}
+          maxLength={6}
+        />
+        {room.length === 6 ?
+          <input
+            className="c-join__formField"
+            type="text"
+            placeholder={dict.join.name}
+            onKeyUp={(e) => setter(setName, /^[A-Za-z0-9@#$^!]{3,15}/, e)}
+            maxLength={15}
+          />
+          : null
+        }
+        <div className="c-join__button">
+          <span></span>
+          <button className="c-join__formField" type="submit" onClick={submit}>
+            {dict.join.button}
+          </button>
+        </div>
+      </form>
+      <footer>
+        <p>
+          {dict.join.footer} <a href="https://duet.digital/" target="_blank" rel="noopener noreferrer"><strong>Duet Digital</strong></a>
+        </p>
+      </footer>
+    </main>
+  )
+}
+
+export default Join

@@ -1,0 +1,58 @@
+.-page {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.-menuButton {
+  background-color: $background;
+  color: $background-contrast;
+  border: 2px solid darken($background, 15%);
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  display: flex;
+  margin-bottom: 0;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  width: fit-content;
+  margin-left: auto;
+  transition: $transition-fast;
+
+  svg {
+    font-size: 1.3em;
+  }
+
+  &.-svg {
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &:hover {
+    background-color: darken($background, 15%);
+    color: darken($background-contrast, 15%);
+    border: 2px solid darken($background, 25%);
+  }
+}
+
+.-mt-1 {
+  margin-top: 1rem;
+}
+
+.-noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

@@ -1,0 +1,5 @@
+@import "../../Scss/Animations";
+
+.c-audio {
+  @include slide-in-animation(0.32s);
+}

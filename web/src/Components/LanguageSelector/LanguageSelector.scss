@@ -1,0 +1,78 @@
+@import "../../Scss/Variables";
+@import "../../Scss/Mixins";
+
+.c-language {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  @include slide-in-animation;
+
+  &__listWrapper {
+    position: absolute;
+    right: 0rem;
+    top: 100%;
+    width: 14rem;
+    background: $background;
+    padding: 0.5rem;
+    border-radius: $border-radius--primary;
+  }
+
+  &__list {
+    max-width: 100%;
+    padding: 0.5rem 0;
+    background: $background;
+    max-height: 9rem;
+    overflow-y: scroll;
+
+    &Item {
+      @include font--primary(500);
+      color: $background-contrast;
+      border-radius: $border-radius--primary;
+      padding: 1rem;
+      margin-right: 0.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &Item>span {
+      display: flex;
+      align-items: center;
+    }
+
+    &Item:hover {
+      background-color: darken($background, 7.5%);
+    }
+
+    &Item.-active {
+      padding: 0.5rem 1rem;
+    }
+
+    &Item.-active:hover {
+      background-color: $background;
+    }
+
+    &Item svg {
+      margin-left: 0.5rem;
+      font-weight: 400;
+    }
+
+    &Item.-sub {
+      padding-bottom: 0;
+    }
+
+    &Item.-active.-sub sub {
+      margin-top: -0.5rem;
+    }
+
+    &Item sub {
+      line-height: 28px;
+    }
+
+    &Item.-unavailable {
+      color: lighten($background-contrast, 40%);
+    }
+    &Item.-unavailable:hover {
+      background-color: $background;
+    }
+  }
+}

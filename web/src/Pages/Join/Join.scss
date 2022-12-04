@@ -1,0 +1,119 @@
+@import "../../Scss/Variables";
+@import "../../Scss/Mixins";
+@import "../../Scss/Animations";
+
+.c-join {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--special-primary);
+
+  @for $i from 1 through 5 {
+    &>*:nth-child(#{$i}) {
+      @include drop-in-animation($i * 0.2s);
+    }
+  }
+
+  &__titles {
+    margin-bottom: -2rem;
+  }
+
+  &__title {
+    @include font--secondary(700);
+  }
+
+  &__subTitle {
+    margin: 0;
+    @include font--secondary(500);
+    @include skewed-hover-animation;
+
+    @media #{$mobile-down} {
+      @include skewed-hover-animation(4.4rem, -3.5rem);
+    }
+  }
+
+  &__form {
+    background-color: darken($background, 5%);
+    padding: 1rem;
+    border-radius: $border-radius--primary;
+    display: flex;
+    flex-direction: column;
+
+    @for $i from 1 through 5 {
+      &>*:nth-child(#{$i}) {
+        @include drop-in-animation(0.2 + $i * 0.25s);
+      }
+    }
+
+    input:nth-of-type(2) {
+      @include drop-in-animation(0.1s);
+    }
+
+    &Field {
+      padding: 0.75rem 3rem;
+      border-radius: $border-radius--primary;
+      font-weight: 800;
+    }
+
+    input {
+      margin-bottom: 0.5rem;
+      border: 2px solid darken($background, 15%);
+      color: darken($background, 40%);
+      text-align: center;
+      outline: none;
+      text-transform: uppercase;
+
+      &::placeholder {
+        text-transform: initial;
+        color: darken($background, 25%);
+      }
+    }
+  }
+
+  &__button {
+    position: relative;
+    overflow: hidden;
+
+    button {
+      width: 100%;
+      margin-bottom: 0rem !important;
+      background: $background-contrast;
+      color: $background;
+      border: 1px solid darken($background-contrast, 2.5%);
+      box-shadow: $box-shadow--secondary;
+      transition: $transition-normal;
+    }
+
+    span {
+      transition: $transition-normal;
+      width: 100%;
+      height: 100%;
+      background: rgba($background, 2%);
+      position: absolute;
+      transform: translateX(-100%);
+      pointer-events: none;
+    }
+
+    &:hover {
+      button {
+        box-shadow: $box-shadow--secondaryClicked;
+        background: darken($background-contrast, 5%);
+      }
+
+      span {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 2.5rem;
+    text-align: center;
+    @include font--primary(500);
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
