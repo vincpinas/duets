@@ -47,3 +47,17 @@
 
   animation: skewed-hover 2s ease-in-out infinite alternate-reverse;
 }
+
+@mixin scale-hover-animation($target: 1.05, $dur: 2s) {
+  @keyframes scale-hover {
+    from {
+      scale: 1;
+    }
+
+    to {
+      scale: $target;
+    }
+  }
+
+  animation: scale-hover $dur ease-in-out infinite alternate-reverse;
+}

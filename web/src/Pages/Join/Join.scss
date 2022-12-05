@@ -25,10 +25,11 @@
   &__subTitle {
     margin: 0;
     @include font--secondary(500);
-    @include skewed-hover-animation;
+    transform: translateX(8.5rem) translateY(-4.4rem) rotateZ(30deg);
+    @include scale-hover-animation(1.05);
 
     @media #{$mobile-down} {
-      @include skewed-hover-animation(4.4rem, -3.5rem);
+      transform: translateX(4.5rem) translateY(-3.5rem) rotateZ(30deg);
     }
   }
 
@@ -108,9 +109,13 @@
 
   footer {
     position: absolute;
-    bottom: 2.5rem;
+    bottom: 1.5rem;
     text-align: center;
     @include font--primary(500);
+
+    p {
+      margin: 0 1rem;
+    }
 
     a {
       text-decoration: underline;

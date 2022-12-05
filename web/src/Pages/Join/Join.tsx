@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import React, { useState, useRef } from "react"
 import { useNavigate } from "react-router-dom";
 import { sfx } from "../../Components/Audio/audiofiles";
 import { useAudioContext } from "../../Components/Audio/AudioProvider";
@@ -11,15 +11,24 @@ function Join() {
   const { createSFX } = useAudioContext();
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
+  const [transition, setTransition] = useState(false);
+  const sElem = useRef<HTMLInputElement>(null);
 
   const validate = (val: string, regex: RegExp) => {
     return regex.test(val)
   }
 
-  const setter = (setFunc: React.Dispatch<string>, regex: RegExp, e: React.KeyboardEvent<HTMLInputElement>) => {
+  const setter = (setFunc: React.Dispatch<string>, regex: RegExp, e: React.KeyboardEvent<HTMLInputElement>, ref?: React.RefObject<HTMLElement>) => {
     const target = e.target as HTMLInputElement
 
-    if (validate(target.value, regex)) setFunc(target.value.toUpperCase()); else setFunc("")
+    if (validate(target.value, regex)) {
+      setFunc(target.value.toUpperCase()); 
+
+      if(ref?.current) {
+        ref.current.focus()
+      }
+    } 
+    else setFunc("")
   }
 
   const submit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -27,10 +36,13 @@ function Join() {
     let dur = 2000
 
     if (room && name) {
-      createSFX(sfx.drip, { start: 1, duration: dur, volume: 1 })
-      setTimeout(() => {
-        navigate(`/room/${room}`)
-      }, dur)
+      if (!transition) {
+        setTransition(true)
+        createSFX(sfx.drip, { start: 1, duration: dur, volume: 1 })
+        setTimeout(() => {
+          navigate(`/room/${room}`)
+        }, dur)
+      }
     }
   }
 
@@ -45,13 +57,14 @@ function Join() {
           className="c-join__formField"
           type="text"
           placeholder={dict.join.room}
-          onKeyUp={(e) => setter(setRoom, /^[A-Za-z]{2}[0-9]{4}/, e)}
+          onKeyUp={(e) => setter(setRoom, /^[A-Za-z]{2}[0-9]{4}/, e, sElem)}
           maxLength={6}
         />
         {room.length === 6 ?
           <input
             className="c-join__formField"
             type="text"
+            ref={sElem}
             placeholder={dict.join.name}
             onKeyUp={(e) => setter(setName, /^[A-Za-z0-9@#$^!]{3,15}/, e)}
             maxLength={15}
