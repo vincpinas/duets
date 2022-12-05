@@ -5,9 +5,9 @@ import { useState } from "react"
 import Cookies from 'cookies-js'
 // Components
 import Helmet from "./Components/Helmet/Helmet"
+import Menu from "./Components/Menu/Menu"
+// Pages
 import Join from "./Pages/Join/Join"
-import LanguageSelector from "./Components/LanguageSelector/LanguageSelector"
-import AudioToggle from "./Components/Audio/AudioToggle"
 // Context
 import { LanguageProvider } from "./Components/Language/LanguageProvider"
 // Data
@@ -26,10 +26,7 @@ function App() {
   return (
     <AudioProvider>
       <LanguageProvider lang={selectedLang} setLang={setSelectedLang}>
-        <div className="a-menu">
-          <AudioToggle />
-          <LanguageSelector />
-        </div>
+        <Menu />
         <Helmet />
         <Routes>
           <Route path="/" element={<Join />} />

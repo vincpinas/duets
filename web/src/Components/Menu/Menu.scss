@@ -1,0 +1,11 @@
+.c-menu {
+    position: absolute;
+    display: flex;
+    height: fit-content;
+    top: 1rem;
+    right: 1rem;
+
+    &>*:not(:last-of-type) {
+        margin-right: 0.5rem;
+    }
+}
