@@ -8,6 +8,7 @@ import Helmet from "./Components/Helmet/Helmet"
 import Menu from "./Components/Menu/Menu"
 // Pages
 import Join from "./Pages/Join/Join"
+import Room from "./Pages/Room/Room"
 // Context
 import { LanguageProvider } from "./Components/Language/LanguageProvider"
 // Data
@@ -30,6 +31,7 @@ function App() {
         <Helmet />
         <Routes>
           <Route path="/" element={<Join />} />
+          <Route path="/room/:room" element={<Room />} />
         </Routes>
       </LanguageProvider>
     </AudioProvider>
