@@ -12,5 +12,4 @@ export default defineConfig({
     outDir: "../duets"
   },
   plugins: [react()],
-  base: './',
 })
