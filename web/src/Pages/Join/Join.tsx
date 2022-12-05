@@ -47,7 +47,7 @@ function Join() {
   }
 
   return (
-    <main className="c-join -page">
+    <main className="c-join -page -bg-special">
       <div className="c-join__titles -noselect">
         <h1 className="c-join__title">Duets!</h1>
         <h4 className="c-join__subTitle">Beta</h4>
