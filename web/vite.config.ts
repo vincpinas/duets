@@ -7,5 +7,9 @@ export default defineConfig({
     open: "/duets",
     port: 3000
   },
+  build: {
+    emptyOutDir: true,
+    outDir: "./duets"
+  },
   plugins: [react()],
 })
