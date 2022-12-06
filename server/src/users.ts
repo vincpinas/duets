@@ -8,6 +8,10 @@ export default class UserManager {
   }
 
   addUser({ id, name, room }: Iuser) {
+    if (!name && !room) return { error: 'No name & no room was provided' }
+    if (!name) return { error: 'No name was provided' }
+    if (!room) return { error: 'No room was provided' }
+
     name = name.trim();
     room = room.trim().toLowerCase();
 
