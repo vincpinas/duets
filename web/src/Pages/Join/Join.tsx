@@ -22,12 +22,12 @@ function Join() {
     const target = e.target as HTMLInputElement
 
     if (validate(target.value, regex)) {
-      setFunc(target.value.toUpperCase()); 
+      setFunc(target.value.toUpperCase());
 
-      if(ref?.current) {
+      if (ref?.current) {
         ref.current.focus()
       }
-    } 
+    }
     else setFunc("")
   }
 
@@ -38,7 +38,7 @@ function Join() {
     if (room && name) {
       if (!transition) {
         setTransition(true)
-        createSFX(sfx.drip, { start: 1, duration: dur, volume: 1 })
+        createSFX(sfx.drip, { start: 1, duration: dur })
         setTimeout(() => {
           navigate(`/room/${room}`)
         }, dur)
@@ -47,43 +47,46 @@ function Join() {
   }
 
   return (
-    <main className="c-join -page -bg-special">
-      <div className="c-join__titles -noselect">
-        <h1 className="c-join__title">Duets!</h1>
-        <h4 className="c-join__subTitle">Beta</h4>
-      </div>
-      <form className="c-join__form">
-        <input
-          className="c-join__formField"
-          type="text"
-          placeholder={dict.join.room}
-          onKeyUp={(e) => setter(setRoom, /^[A-Za-z]{2}[0-9]{4}/, e, sElem)}
-          maxLength={6}
-        />
-        {room.length === 6 ?
+    <>
+      { transition ? <div className="c-join__transition -transition"></div> : null}
+      <main className="c-join -page -bg-special">
+        <div className="c-join__titles -noselect">
+          <h1 className="c-join__title">Duets!</h1>
+          <h4 className="c-join__subTitle">Beta</h4>
+        </div>
+        <form className="c-join__form">
           <input
             className="c-join__formField"
             type="text"
-            ref={sElem}
-            placeholder={dict.join.name}
-            onKeyUp={(e) => setter(setName, /^[A-Za-z0-9@#$^!]{3,15}/, e)}
-            maxLength={15}
+            placeholder={dict.join.room}
+            onKeyUp={(e) => setter(setRoom, /^[A-Za-z]{2}[0-9]{4}/, e, sElem)}
+            maxLength={6}
           />
-          : null
-        }
-        <div className="c-join__button">
-          <span></span>
-          <button className="c-join__formField" type="submit" onClick={submit}>
-            {dict.join.button}
-          </button>
-        </div>
-      </form>
-      <footer>
-        <p>
-          {dict.join.footer} <a href="https://duet.digital/" target="_blank" rel="noopener noreferrer"><strong>Duet Digital</strong></a>
-        </p>
-      </footer>
-    </main>
+          {room.length === 6 ?
+            <input
+              className="c-join__formField"
+              type="text"
+              ref={sElem}
+              placeholder={dict.join.name}
+              onKeyUp={(e) => setter(setName, /^[A-Za-z0-9@#$^!]{3,15}/, e)}
+              maxLength={15}
+            />
+            : null
+          }
+          <div className="c-join__button">
+            <span></span>
+            <button className="c-join__formField" type="submit" onClick={submit}>
+              {dict.join.button}
+            </button>
+          </div>
+        </form>
+        <footer>
+          <p>
+            {dict.join.footer} <a href="https://duet.digital/" target="_blank" rel="noopener noreferrer"><strong>Duet Digital</strong></a>
+          </p>
+        </footer>
+      </main>
+    </>
   )
 }
 

@@ -14,6 +14,10 @@
     }
   }
 
+  &__transition {
+    @include fade-in-custom();
+  }
+
   &__titles {
     margin-bottom: -2rem;
   }
