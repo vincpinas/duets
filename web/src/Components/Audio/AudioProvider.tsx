@@ -1,5 +1,5 @@
 import { createContext, useContext, useRef, useState, useEffect } from "react";
-import { joinMusic } from "./audiofiles";
+import { joinMusic, sfx } from "./audiofiles";
 import { LPProps, InitialStateType, SFXOptions } from "./interfaces";
 
 const INITIAL_STATE: InitialStateType = {
@@ -18,6 +18,12 @@ export const AudioProvider = ({ children }: LPProps) => {
   const [src, setSrc] = useState(joinMusic);
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    Object.values(sfx).forEach(value => {
+      new Audio(value).preload = "auto"
+    })
+  }, [])
 
   const createSFX = (src: string, options?: SFXOptions) => {
     let temp = new Audio(src);
@@ -44,7 +50,7 @@ export const AudioProvider = ({ children }: LPProps) => {
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.loop = true;
-      audioRef.current.volume = 0.1;
+      audioRef.current.volume = 0.05;
       audioRef.current.src = src;
     }
   }, [src])
