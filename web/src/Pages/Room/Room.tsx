@@ -1,8 +1,23 @@
-import { useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
+import { io } from 'socket.io-client';
+import { ENDPOINT } from "../../constants";
 import "./Room.scss"
 
 function Room() {
-  const { room } = useParams()
+  let socket: any;
+  const navigate = useNavigate();
+  const { room, name } = useParams();
+
+  useEffect(() => {
+    socket = io(ENDPOINT);
+    socket.emit('user-join', { name, room }, () => {});
+
+    socket.on('message', (m: any) => {
+      console.log(m)
+      if(m.type === "error") navigate("/")
+    })
+  }, [room, name])
 
   return (
     <div className="c-room -page -bg-special">
