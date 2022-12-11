@@ -10,6 +10,9 @@ function Room() {
   const { room, name } = useParams();
 
   useEffect(() => {
+    if(!room) return navigate("/")
+    if(!name) return navigate("/")
+
     socket = io(ENDPOINT);
     socket.emit('user-join', { name, room }, () => {});
 

@@ -31,7 +31,7 @@ function App() {
         <Helmet />
         <Routes>
           <Route path="/" element={<Join />} />
-          <Route path="/room/:room" element={<Room />} />
+          <Route path="/room/:room/:name" element={<Room />} />
         </Routes>
       </LanguageProvider>
     </AudioProvider>

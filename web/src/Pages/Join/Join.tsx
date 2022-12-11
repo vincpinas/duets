@@ -9,8 +9,8 @@ function Join() {
   const navigate = useNavigate();
   const { dict } = useLanguageContext();
   const { createSFX } = useAudioContext();
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
+  const [room, setRoom] = useState("XD3210");
+  const [name, setName] = useState("vincent");
   const [transition, setTransition] = useState(false);
   const sElem = useRef<HTMLInputElement>(null);
 
@@ -33,15 +33,15 @@ function Join() {
 
   const submit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    let dur = 2000
+    let dur = 1000
 
     if (room && name) {
       if (!transition) {
         setTransition(true)
         createSFX(sfx.drip, { start: 1, duration: dur })
         setTimeout(() => {
-          navigate(`/room/${room}`)
-        }, dur)
+          navigate(`/room/${room}/${name}`)
+        }, dur / 2)
       }
     }
   }

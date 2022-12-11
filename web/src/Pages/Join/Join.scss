@@ -15,7 +15,7 @@
   }
 
   &__transition {
-    @include fade-in-custom();
+    @include fade-in-custom(0.5s, 0s);
   }
 
   &__titles {
