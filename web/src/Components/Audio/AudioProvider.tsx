@@ -28,7 +28,7 @@ export const AudioProvider = ({ children }: LPProps) => {
   const createSFX = (src: string, options?: SFXOptions) => {
     let temp = new Audio(src);
 
-    if (options?.volume) temp.currentTime = options.volume;
+    if (options?.volume) temp.volume = options.volume;
     if (options?.start) temp.currentTime = options.start;
 
     temp.play();
