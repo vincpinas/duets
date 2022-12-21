@@ -1,6 +1,6 @@
 import "./Scss/App.scss"
 // Libs
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import { useState } from "react"
 import Cookies from 'cookies-js'
 // Components
@@ -32,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Join />} />
           <Route path="/room/:room/:name" element={<Room />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </LanguageProvider>
     </AudioProvider>
