@@ -3,3 +3,9 @@ export interface Iuser {
   name: string;
   room: string;
 }
+
+export interface Iroom {
+  id: string;
+  users: Iuser[];
+  status?: number;
+}

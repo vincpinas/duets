@@ -5,10 +5,10 @@ import http from 'http'
 import cors from 'cors'
 // Custom functions
 import router from './router'
-import UserManager from './users'
+import RoomManager from './rooms'
 import userEvents from './Events/UserEvents'
 
-const users = new UserManager();
+const rooms = new RoomManager();
 
 // If no production PORT is available it tries to run on PORT 5000 for development.
 const PORT = process.env.PORT || 5000;
@@ -26,7 +26,7 @@ const io = new Server(server, {
 
 // Socket.io Event Handlers.
 io.on('connection', (socket) => {
-  userEvents(socket, users, io)
+  userEvents(socket, rooms, io)
 });
 
 app.use(router);

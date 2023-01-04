@@ -9,8 +9,8 @@ function Join() {
   const navigate = useNavigate();
   const { dict } = useLanguageContext();
   const { createSFX } = useAudioContext();
-  const [room, setRoom] = useState("XD3210");
-  const [name, setName] = useState("vincent");
+  const [room, setRoom] = useState("");
+  const [name, setName] = useState("");
   const [transition, setTransition] = useState(false);
   const sElem = useRef<HTMLInputElement>(null);
 

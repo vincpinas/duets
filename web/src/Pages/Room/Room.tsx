@@ -1,35 +1,51 @@
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { io } from 'socket.io-client';
-import { ENDPOINT } from "../../constants";
+import { socket } from "../../service";
 import "./Room.scss"
 
 function Room() {
-  let socket: any;
   const navigate = useNavigate();
   const { room, name } = useParams();
+  const [users, setUsers] = useState([]);
+  const joinedRef = useRef(false);
 
   useEffect(() => {
-    if (!room || room === "") return navigate("/")
-    if (!name || name === "") return navigate("/")
+    if (!room || !name || room === "" || name === "") {
+      socket.off();
+      return navigate("/")
+    }
 
-    socket = io(ENDPOINT);
-    socket.emit('user-join', { name, room }, () => { });
+    if(!joinedRef.current) {
+      socket.emit('user-join', { name, room });
+      joinedRef.current = true;
+    }
 
-    socket.on('message', (m: any) => {
-      console.log(m)
-      if (m.type === "error") navigate("/")
+    socket.on('message', (message: { type: string; message: string }) => {
+      if (message.type === "error") navigate("/")
     })
-  }, [room, name])
+
+    socket.on('user-update', (users: []) => setUsers(users))
+
+    return () => {
+      socket.emit('user-disconnect', { roomId: room })
+      socket.off();
+    }
+  }, [])
 
   window.onbeforeunload = () => {
-    socket.emit('user-disconnect');
+    socket.emit('user-disconnect', { roomId: room });
     socket.off();
   }
 
   return (
     <div className="c-room -page">
-
+      <ul>
+        {users.map((user: any) => {
+          return (
+            <li key={user.id}>{user.name}</li>
+          )
+        })}
+      </ul>
     </div>
   )
 }
