@@ -22,7 +22,7 @@ function Join() {
     const target = e.target as HTMLInputElement
 
     if (validate(target.value, regex)) {
-      setFunc(target.value.toUpperCase());
+      setFunc(target.value.toLowerCase());
 
       if (ref?.current) {
         ref.current.focus()
