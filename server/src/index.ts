@@ -5,7 +5,7 @@ import http from 'http'
 import cors from 'cors'
 // Custom functions
 import router from './router'
-import RoomManager from './rooms'
+import RoomManager from './Classes/rooms'
 import userEvents from './Events/UserEvents'
 
 const rooms = new RoomManager();

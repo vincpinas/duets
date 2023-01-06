@@ -1,4 +1,4 @@
-import { Iuser, Iroom } from "./interfaces";
+import { Iuser, Iroom } from "../Interfaces/rooms";
 
 export default class RoomManager {
   allRooms: Iroom[];

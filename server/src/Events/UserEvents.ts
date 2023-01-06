@@ -1,5 +1,5 @@
 import { Server, Socket } from "socket.io";
-import RoomManager from "../rooms";
+import RoomManager from "../Classes/rooms";
 
 export default function userEvents(socket: Socket, rooms: RoomManager, io: Server) {
   // User joins room event.
