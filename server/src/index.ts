@@ -7,6 +7,7 @@ import cors from 'cors'
 import router from './router'
 import RoomManager from './Classes/rooms'
 import userEvents from './Events/UserEvents'
+import roomEvents from './Events/RoomEvents'
 
 const rooms = new RoomManager();
 
@@ -27,6 +28,7 @@ const io = new Server(server, {
 // Socket.io Event Handlers.
 io.on('connection', (socket) => {
   userEvents(socket, rooms, io)
+  roomEvents(socket, rooms)
 });
 
 app.use(router);
