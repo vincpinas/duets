@@ -7,38 +7,42 @@ function Room() {
   const navigate = useNavigate();
   const { room, name } = useParams();
   const [users, setUsers] = useState([]);
+  const [roomData, setRoomData] = useState<any>();
   const joinedRef = useRef(false);
 
+  const messageHandler = (message: { type: string; message: string }) => {
+    if (message.type === "error") navigate("/")
+    console.log(message.message)
+  }
+
+  const userUpdateHandler = (users: any) => setUsers(users)
+  const beforeUnload = () => socket.emit('user-disconnect', { roomId: room })
+  
   useEffect(() => {
     if (!room || !name || room === "" || name === "") {
-      socket.off();
       return navigate("/")
     }
-
+    
     if(!joinedRef.current) {
       socket.emit('user-join', { name, room });
-      joinedRef.current = true;
+      socket.emit("room-info", room, (response: any) => setRoomData(response));
+      joinedRef.current = true
     }
-
-    socket.on('message', (message: { type: string; message: string }) => {
-      if (message.type === "error") navigate("/")
-    })
-
-    socket.on('user-update', (users: []) => setUsers(users))
+    
+    socket.on('message', messageHandler)
+    socket.on('user-update', userUpdateHandler)
+    
+    window.addEventListener("beforeunload", beforeUnload);
 
     return () => {
-      socket.emit('user-disconnect', { roomId: room })
-      socket.off();
+      socket.off('message', messageHandler);
+      socket.off('user-update', userUpdateHandler);
+      window.removeEventListener("beforeunload", beforeUnload)
     }
   }, [])
 
-  window.onbeforeunload = () => {
-    socket.emit('user-disconnect', { roomId: room });
-    socket.off();
-  }
-
   return (
-    <div className="c-room -page">
+    <div className="c-room -page -bg-special">
       <ul>
         {users.map((user: any) => {
           return (
