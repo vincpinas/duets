@@ -25,7 +25,7 @@ export default class RoomManager {
       if (existingRoom?.users.find((userItem: Iuser) => userItem.name === user.name)) return { error: 'This name is already taken.' }
       existingRoom.users.push(user);
     } else {
-      this.allRooms.push({ id: room, users: [] });
+      this.allRooms.push({ id: room, users: [], status: 0, maxplayers: 8 });
       this.allRooms.find((roomItem: Iroom) => roomItem.id === room)?.users.push(user);
     }
 
@@ -37,15 +37,13 @@ export default class RoomManager {
     const userRoom = this.getRoom(roomId);
     const index = userRoom?.users.findIndex((user: Iuser) => user.id === id);
 
-    console.log(userRoom?.users.find((user: Iuser) => user.id === id), id)
-
-    if (index && index !== -1) {
+    if (typeof index !== "undefined" && index !== -1) {
       return userRoom?.users.splice(index, 1)[0];
     }
   }
 
   // Filter through rooms using id and return a specific room object.
-  getRoom = (roomId: string) => this.allRooms.find((roomItem: Iroom) => roomItem.id === roomId);
+  getRoom = (roomId: string) => this.allRooms.find((roomItem: Iroom) => roomItem.id === roomId.toLowerCase());
 
   // Filter through users in specific room and return a specific user object.
   getUserInRoom = (roomId: string, id: string) => this.getRoom(roomId)?.users.find((user: Iuser) => user.id === id);
