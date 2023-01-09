@@ -51,8 +51,13 @@ export const translations = {
       room: "Room PIN",
       name: "Name",
     },
-
+    room: {
+      wait: "Waiting",
+      start: "Starting",
+      players: "Players",
+    },
   },
+
   dutch: {
     helmet: {
       join: "Voer kamer-PIN in"
@@ -63,8 +68,13 @@ export const translations = {
       room: "Kamer-Pin",
       name: "Naam",
     },
-    
+    room: {
+      wait: "Wachten",
+      start: "Starten",
+      players: "Spelers",
+    },
   },
+
   spanish: {
     helmet: {
       join: "Entrar PIN de habitación"
@@ -75,6 +85,10 @@ export const translations = {
       room: "PIN de habitación",
       name: "Nombre",
     },
-
+    room: {
+      wait: "Esperando",
+      start: "Comenzar",
+      players: "Jugadores",
+    },
   }
 }
