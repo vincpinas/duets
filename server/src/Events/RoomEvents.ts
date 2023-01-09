@@ -4,28 +4,47 @@ import RoomManager from "../Classes/rooms";
 export default function roomEvents(socket: Socket, rooms: RoomManager, io: Server) {
   // Return room data on request.
   socket.on("room-info", (room, callback) => {
-    let temp = rooms.getRoom(room.toLowerCase())
+    let temp = rooms.getRoom(room.toLowerCase());
 
-    callback(temp)
+    callback(temp);
   });
 
-  // Set room status to starting if required amount of players is present.
+  /* 
+    Set room status to starting (1) when minimum amount of players is present.
+    Set a starting period of 30sec before settings status to running (2) and no more players can join.
+  */
   socket.on("user-join", ({ roomId }) => {
     roomId = roomId.toLowerCase();
-    const room = rooms.getRoom(roomId)
-    if (room && room?.users.length >= 2) {
+    const room = rooms.getRoom(roomId);
+    if (room && room?.users.length >= rooms.config.min_players) {
       room.status = 1
+      io.to(room.id).emit('room-info', room);
+
+      setTimeout(() => {
+        if (room.status === 1) {
+          room.status = 2
+          io.to(room.id).emit('room-info', room);
+        }
+      }, rooms.config.start_delay)
+    }
+  })
+
+  // Set room status back to waiting if the game hasn't started yet and amount players is less than required.
+  socket.on("user-disconnect", ({ roomId }) => {
+    roomId = roomId.toLowerCase();
+    const room = rooms.getRoom(roomId);
+    if (room && room?.users.length < rooms.config.min_players && room.status !== 2) {
+      room.status = 0
       io.to(room.id).emit('room-info', room);
     }
   })
 
-  // Set room status back to waiting if the game hasn't started yet and players is less than required.
+  // Remove room when amount of players hits 0.
   socket.on("user-disconnect", ({ roomId }) => {
     roomId = roomId.toLowerCase();
-    const room = rooms.getRoom(roomId)
-    if (room && room?.users.length < 2 && room.status !== 2) {
-      room.status = 0
-      io.to(room.id).emit('room-info', room);
+    const room = rooms.getRoom(roomId);
+    if (room && room?.users.length <= 0) {
+      rooms.removeRoom(roomId);
     }
   })
 }

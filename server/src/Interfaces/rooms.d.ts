@@ -1,12 +1,18 @@
-export interface Iuser {
+export interface IUser {
   id: string;
   name: string;
   room: string;
 }
 
-export interface Iroom {
+export interface IRoom {
   id: string;
-  users: Iuser[];
+  users: IUser[];
   status: number;
   maxplayers: number;
+}
+
+export interface IConfig {
+  max_players: number;
+  min_players: number;
+  start_delay: number;
 }
