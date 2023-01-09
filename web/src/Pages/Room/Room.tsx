@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { socket } from "../../service";
+import RoomHeader from "../../Components/RoomHeader/RoomHeader";
 import "./Room.scss"
 
 function Room() {
@@ -10,12 +11,8 @@ function Room() {
   const [roomData, setRoomData] = useState<any>();
   const joinedRef = useRef(false);
 
-  const messageHandler = (message: { type: string; message: string }) => {
-    if (message.type === "error") navigate("/")
-    console.log(message.message)
-  }
-
-  const userUpdateHandler = (users: any) => setUsers(users)
+  const messageHandler = (message: { type: string; message: string }) => { if (message.type === "error") navigate("/") }
+  const roomUpdateHandler = (info: any) =>  {setRoomData(info); console.log(info)}
   const beforeUnload = () => socket.emit('user-disconnect', { roomId: room })
   
   useEffect(() => {
@@ -24,31 +21,31 @@ function Room() {
     }
     
     if(!joinedRef.current) {
-      socket.emit('user-join', { name, room });
-      socket.emit("room-info", room, (response: any) => setRoomData(response));
+      socket.emit('user-join', { name, roomId: room });
       joinedRef.current = true
     }
     
     socket.on('message', messageHandler)
-    socket.on('user-update', userUpdateHandler)
+    socket.on('room-info', roomUpdateHandler)
     
     window.addEventListener("beforeunload", beforeUnload);
 
     return () => {
       socket.off('message', messageHandler);
-      socket.off('user-update', userUpdateHandler);
+      socket.off('room-info', roomUpdateHandler);
       window.removeEventListener("beforeunload", beforeUnload)
     }
   }, [])
 
   return (
     <div className="c-room -page -bg-special">
+      <RoomHeader roomData={roomData} />
       <ul>
-        {users.map((user: any) => {
+        {roomData ? roomData.users.map((user: any) => {
           return (
             <li key={user.id}>{user.name}</li>
           )
-        })}
+        }) : null}
       </ul>
     </div>
   )

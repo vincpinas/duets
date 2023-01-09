@@ -4,12 +4,31 @@
 
 .c-room {
   padding: 6rem;
+  display: flex;
+  flex-direction: column;
+
+  @media #{$tablet-down} {
+    padding: 5rem 2rem;
+  }
+
+  ul {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(7rem, 8rem));
+    grid-auto-rows: 100%;
+    gap: 1rem;
+
+    @media #{$tablet-down} {
+      gap: 1.5rem;
+    }
+  }
 
   ul li {
+    @include font--primary(500);
+    width: fit-content;
     line-height: 20px;
     background-color: $background-contrast;
     padding: 0.5rem 2rem;
-    margin: 0.25rem 0.5rem;
     color: $background;
     border: 1px solid darken($background-contrast, 2.5%);
     box-shadow: $box-shadow--secondary;
