@@ -1,0 +1,15 @@
+.c-roomheader {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+
+  &__item {
+    margin: 0rem 1rem 1rem 0rem;
+  }
+
+  &__status {
+    margin-left: auto;
+    margin-right: 0;
+    width: 4rem;
+  }
+}
