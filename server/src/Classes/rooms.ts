@@ -43,7 +43,7 @@ export default class RoomManager {
   }
 
   // Filter through rooms using id and return a specific room object.
-  getRoom = (roomId: string) => this.allRooms.find((roomItem: Iroom) => roomItem.id === roomId.toLowerCase());
+  getRoom = (roomId: string) => this.allRooms.find((roomItem: Iroom) => roomItem.id === roomId);
 
   // Filter through users in specific room and return a specific user object.
   getUserInRoom = (roomId: string, id: string) => this.getRoom(roomId)?.users.find((user: Iuser) => user.id === id);

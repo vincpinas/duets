@@ -7,13 +7,6 @@ export interface Iuser {
 export interface Iroom {
   id: string;
   users: Iuser[];
-  status?: number;
-  maxplayers: number;
-}
-
-export interface IroomData {
-  id: string;
-  users?: Iuser[];
-  status?: number;
+  status: number;
   maxplayers: number;
 }

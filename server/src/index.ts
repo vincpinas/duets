@@ -28,7 +28,7 @@ const io = new Server(server, {
 // Socket.io Event Handlers.
 io.on('connection', (socket) => {
   userEvents(socket, rooms, io)
-  roomEvents(socket, rooms)
+  roomEvents(socket, rooms, io)
 });
 
 app.use(router);
