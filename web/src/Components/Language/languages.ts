@@ -55,6 +55,7 @@ export const translations = {
     room: {
       wait: "Waiting",
       start: "Starting",
+      running: "Running",
       players: "Players",
     },
   },
@@ -73,6 +74,7 @@ export const translations = {
     room: {
       wait: "Wachten",
       start: "Starten",
+      running: "Lopend",
       players: "Spelers",
     },
   },
@@ -91,6 +93,7 @@ export const translations = {
     room: {
       wait: "Esperando",
       start: "Comenzar",
+      running: "Funcionamiento",
       players: "Jugadores",
     },
   }

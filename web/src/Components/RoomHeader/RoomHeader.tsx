@@ -24,6 +24,8 @@ function RoomHeader({ roomData }: RHeaderProps) {
         return `${dict.room.wait}`;
       case 1:
         return `${dict.room.start}`;
+      case 2:
+        return `${dict.room.running}`;
       default:
         break;
     }
