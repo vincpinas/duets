@@ -10,6 +10,8 @@
   top: 50%;
   margin-right: 1rem;
 
+  @include slide-in-animation(0.5s);
+
   &__title {
     @include font--secondary(500);
     margin-bottom: 0.2rem;
@@ -17,13 +19,21 @@
     @for $i from 1 through 21 {
       &>*:nth-child(#{$i}) {
         @keyframes title-animation {
-          0% { color: $background; }
+          0% {
+            color: $background;
+          }
 
-          98% { color: $background; }
+          98% {
+            color: $background;
+          }
 
-          99% { color: darken($background, 25%); }
+          99% {
+            color: darken($background, 25%);
+          }
 
-          100% { color: $background; }
+          100% {
+            color: $background;
+          }
         }
 
         // Give it 2ms per letter for a smooth animation (basically double the duration and turn it to ms)

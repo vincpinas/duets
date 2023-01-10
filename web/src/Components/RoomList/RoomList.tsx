@@ -62,7 +62,7 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
   }
 
   return (
-    <div className='c-roomlist'>
+    <div className='c-roomlist -noselect'>
       <h4 className='c-roomlist__title'>{stringToSpan(dict.join.rooms)}</h4>
       <ul className='c-roomlist__list'>
         {roomList.map((room) => {
