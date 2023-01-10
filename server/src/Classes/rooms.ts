@@ -23,9 +23,9 @@ export default class RoomManager {
 
     const user = { id, name, room };
 
-
     if (existingRoom) {
       if (existingRoom?.users.find((userItem: IUser) => userItem.name === user.name)) return { error: 'This name is already taken.' }
+      else if (existingRoom?.users.length >= this.config.max_players) return { error: 'Room has reached capacity' }
       existingRoom.users.push(user);
     } else {
       this.allRooms.push({ id: room, users: [], status: 0, maxplayers: this.config.max_players });

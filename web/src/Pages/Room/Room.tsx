@@ -7,30 +7,28 @@ import "./Room.scss"
 function Room() {
   const navigate = useNavigate();
   const { room, name } = useParams();
-  const [users, setUsers] = useState([]);
   const [roomData, setRoomData] = useState<any>();
   const joinedRef = useRef(false);
 
   const messageHandler = (message: { type: string; message: string }) => { if (message.type === "error") navigate("/") }
-  const roomUpdateHandler = (info: any) =>  {setRoomData(info); console.log(info)}
+  const roomUpdateHandler = (info: any) => { setRoomData(info); }
   const beforeUnload = () => socket.emit('user-disconnect', { roomId: room })
-  
+
   useEffect(() => {
     if (!room || !name || room === "" || name === "") {
       return navigate("/")
     }
-    
-    if(!joinedRef.current) {
-      socket.emit('user-join', { name, roomId: room });
-      joinedRef.current = true
-    }
-    
+
+    socket.emit('user-join', { name, roomId: room });
+    joinedRef.current = true
+
     socket.on('message', messageHandler)
     socket.on('room-info', roomUpdateHandler)
-    
+
     window.addEventListener("beforeunload", beforeUnload);
 
     return () => {
+      socket.emit('user-disconnect', { roomId: room })
       socket.off('message', messageHandler);
       socket.off('room-info', roomUpdateHandler);
       window.removeEventListener("beforeunload", beforeUnload)

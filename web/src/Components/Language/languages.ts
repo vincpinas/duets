@@ -50,6 +50,7 @@ export const translations = {
       button: "Enter",
       room: "Room PIN",
       name: "Name",
+      rooms: "Open rooms",
     },
     room: {
       wait: "Waiting",
@@ -67,6 +68,7 @@ export const translations = {
       button: "Invoeren",
       room: "Kamer-Pin",
       name: "Naam",
+      rooms: "Open kamers",
     },
     room: {
       wait: "Wachten",
@@ -84,6 +86,7 @@ export const translations = {
       button: "Entrar",
       room: "PIN de habitación",
       name: "Nombre",
+      rooms: "Habitaciones abiertas",
     },
     room: {
       wait: "Esperando",

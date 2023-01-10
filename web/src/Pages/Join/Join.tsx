@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { sfx } from "../../Components/Audio/audiofiles";
 import { useAudioContext } from "../../Components/Audio/AudioProvider";
 import { useLanguageContext } from "../../Components/Language/LanguageProvider";
+import RoomList from "../../Components/RoomList/RoomList";
 import "./Join.scss"
 
 function Join() {
@@ -12,6 +13,7 @@ function Join() {
   const [room, setRoom] = useState("");
   const [name, setName] = useState("");
   const [transition, setTransition] = useState(false);
+  const duration = 1000
   const sElem = useRef<HTMLInputElement>(null);
 
   const validate = (val: string, regex: RegExp) => {
@@ -33,15 +35,14 @@ function Join() {
 
   const submit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    let dur = 1000
 
     if (room && name) {
       if (!transition) {
         setTransition(true)
-        createSFX(sfx.drip, { start: 1, duration: dur })
+        createSFX(sfx.drip, { start: 1, duration: duration })
         setTimeout(() => {
           navigate(`/room/${room}/${name}`)
-        }, dur / 2)
+        }, duration / 2)
       }
     }
   }
@@ -49,6 +50,7 @@ function Join() {
   return (
     <>
       { transition ? <div className="c-join__transition -transition"></div> : null}
+      <RoomList setTransition={setTransition} duration={duration} transition={transition} />
       <main className="c-join -page -bg-special">
         <div className="c-join__titles -noselect">
           <h1 className="c-join__title">Duets!</h1>
