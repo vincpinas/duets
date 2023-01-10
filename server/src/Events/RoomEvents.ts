@@ -11,7 +11,7 @@ export default function roomEvents(socket: Socket, rooms: RoomManager, io: Serve
   });
 
   /* 
-    Set room status to starting (1) when minimum amount of players is present.
+    Set room status from waiting (0) to starting (1) when minimum amount of players is present.
     Set a starting period of 30sec before settings status to running (2) and no more players can join.
   */
   socket.on("user-join", ({ roomId }) => {
