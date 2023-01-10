@@ -70,4 +70,9 @@
   &__room span:last-of-type {
     margin-left: auto;
   }
+  
+  &__room a {
+    display: flex;
+    width: 100%;
+  }
 }

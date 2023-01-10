@@ -12,11 +12,10 @@
   }
 
   ul {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(4, minmax(7rem, 8rem));
-    grid-auto-rows: 100%;
+    width: 70%;
+    display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 
     @media #{$tablet-down} {
       gap: 1.5rem;

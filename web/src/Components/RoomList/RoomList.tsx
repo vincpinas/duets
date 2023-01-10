@@ -24,15 +24,24 @@ interface RoomListProps {
 function RoomList({ duration, setTransition, transition }: RoomListProps) {
   const navigate = useNavigate();
   const [roomList, setRoomList] = useState<IRoom[] | []>([]);
+  const [generatedName, setGeneratedName] = useState<string>("");
   const { dict } = useLanguageContext();
   const { createSFX } = useAudioContext();
   const fetched = useRef(false);
+
+  const nameConfig: Config = {
+    dictionaries: [adjectives, colors, animals],
+    separator: " ",
+    length: 2,
+  };
 
   useEffect(() => {
     if (!fetched.current) {
       socket.emit('room-list', (rooms: IRoom[]) => setRoomList(rooms));
       fetched.current = true
     }
+
+    setGeneratedName(uniqueNamesGenerator(nameConfig))
 
     setTimeout(() => {
       socket.emit('room-list', (rooms: IRoom[]) => setRoomList(rooms));
@@ -45,18 +54,12 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
     })
   }
 
-  const nameConfig: Config = {
-    dictionaries: [adjectives, colors, animals],
-    separator: '',
-    length: 2,
-  };
-
   const submit = (room: string) => {
     if (!transition) {
       setTransition(true)
       createSFX(sfx.drip, { start: 1, duration: duration })
       setTimeout(() => {
-        navigate(`/room/${room}/${uniqueNamesGenerator(nameConfig)}`)
+        navigate(`/room/${room}/${generatedName}`)
       }, duration / 2)
     }
   }
@@ -68,8 +71,10 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
         {roomList.map((room) => {
           return (
             <li onClick={() => submit(room.id)} key={room.id} className="c-roomlist__room">
-              <span>{room.users.length} / {room.maxplayers}</span>
-              <span>{room.id.toUpperCase()}</span>
+              <Link to={`/room/${room.id}/${generatedName}`} onClick={(e) => e.preventDefault() }>
+                <span>{room.users.length} / {room.maxplayers}</span>
+                <span>{room.id.toUpperCase()}</span>
+              </Link>
             </li>
           )
         })}

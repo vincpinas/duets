@@ -16,8 +16,8 @@
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-    document.documentElement.style.setProperty(
-      '--special-primary', `hwb(${getRandomInt(30, 255)} 0% 31%)`
-    );
+		const colorAngle = getRandomInt(30, 255)
+    document.documentElement.style.setProperty('--special-primary', `hwb(${colorAngle} 0% 31%)`);
+    document.documentElement.style.setProperty('--special-secondary', `hwb(${colorAngle} 31% 25%)`);
 	</script>
 </html>
