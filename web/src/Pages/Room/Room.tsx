@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { socket } from "../../service";
-import RoomHeader from "../../Components/RoomHeader/RoomHeader";
 import "./Room.scss"
+import WaitingRoom from "../../Components/WaitingRoom/WaitingRoom";
+import GameRoom from "../../Components/GameRoom/GameRoom";
+import { GameData } from "../../Interfaces/server";
 
 function Room() {
   const navigate = useNavigate();
   const { room, name } = useParams();
-  const [roomData, setRoomData] = useState<any>();
+  const [roomData, setRoomData] = useState<GameData>();
   const joinedRef = useRef(false);
 
   const messageHandler = (message: { type: string; message: string }) => { if (message.type === "error") navigate("/") }
@@ -37,14 +39,7 @@ function Room() {
 
   return (
     <div className="c-room -page -bg-special">
-      <RoomHeader roomData={roomData} />
-      <ul>
-        {roomData ? roomData.users.map((user: any) => {
-          return (
-            <li key={user.id}>{user.name}</li>
-          )
-        }) : null}
-      </ul>
+      { roomData && roomData.status === 2 ? <GameRoom roomData={roomData} /> : <WaitingRoom roomData={roomData} /> }
     </div>
   )
 }

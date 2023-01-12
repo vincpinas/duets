@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { GameData } from '../../Interfaces/server';
 import { useLanguageContext } from '../Language/LanguageProvider'
 import './RoomHeader.scss'
 
 interface RHeaderProps {
-  roomData: {
-    id: string;
-    status: number;
-    maxplayers: number;
-    users: [];
-  }
+  roomData: GameData | undefined;
 }
 
 function RoomHeader({ roomData }: RHeaderProps) {
