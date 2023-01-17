@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         <head>
             <meta charset="utf-8" />
             <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />       
-            <title>TSChat • Router</title>
+            <title>Duets Game • Router</title>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
                 *, *::before, *::after {
@@ -42,5 +42,9 @@ router.get('/', (req, res) => {
        </html>`
     );
 });
+
+router.get('/health', (req, res) => {
+    res.send("health");
+ });
 
 export default router;
