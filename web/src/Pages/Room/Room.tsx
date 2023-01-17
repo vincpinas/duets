@@ -39,7 +39,7 @@ function Room() {
 
   return (
     <div className="c-room -page -bg-special">
-      { roomData && roomData.status === 2 ? <GameRoom roomData={roomData} /> : <WaitingRoom roomData={roomData} /> }
+      { roomData && roomData.status === 2 ? <GameRoom roomData={roomData} socket={socket} /> : <WaitingRoom roomData={roomData} /> }
     </div>
   )
 }
