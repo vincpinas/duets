@@ -1,4 +1,5 @@
 import { GameData } from '../../Interfaces/server';
+import { socket } from '../../service';
 import RoomHeader from '../RoomHeader/RoomHeader';
 import './WaitingRoom.scss'
 
@@ -13,7 +14,7 @@ function WaitingRoom({ roomData }: WRProps) {
       <ul>
         {roomData ? roomData.users.map((user: any) => {
           return (
-            <li key={user.id}>{user.name}</li>
+            <li className={socket.id === user.id ? 'user user__highlight' : 'user'} key={user.id}>{user.name}</li>
           )
         }) : null}
       </ul>

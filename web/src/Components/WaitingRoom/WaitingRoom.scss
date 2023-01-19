@@ -14,7 +14,7 @@
     }
   }
 
-  ul li {
+  .user {
     @include font--primary(500);
     width: fit-content;
     line-height: 20px;
@@ -25,5 +25,10 @@
     box-shadow: $box-shadow--secondary;
     transition: $transition-normal;
     border-radius: 5px;
+
+    &__highlight {
+      background-color: darken($color-green, 17.5%);
+      border: 1px solid darken($color-green, 17.5%);
+    }
   }
 }
