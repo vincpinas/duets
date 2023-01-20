@@ -14,10 +14,7 @@ function Room() {
 
   const messageHandler = (message: { type: string; message: string }) => { if (message.type === "error") navigate("/") }
   const roomUpdateHandler = (info: any) => { setRoomData(info); }
-  const beforeUnload = () => {
-    socket.emit('user-disconnect', { roomId: room })
-    socket.close()
-  }
+  const beforeUnload = () => { socket.emit('user-disconnect', { roomId: room }) }
 
   useEffect(() => {
     if (!room || !name || room === "" || name === "") {
