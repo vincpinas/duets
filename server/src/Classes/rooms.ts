@@ -1,13 +1,13 @@
-import { IUser, IRoom, IConfig } from "../Interfaces/rooms";
-import config from "./config";
+import { IUser, IRoom } from "../Interfaces/rooms";
+import { RoomConfig } from "./config";
 
 export default class RoomManager {
   allRooms: IRoom[];
-  config: IConfig;
+  config: RoomConfig;
 
   constructor() {
     this.allRooms = [];
-    this.config = config;
+    this.config = new RoomConfig();
   }
 
   // Add user to a room if the room exists, otherwise create a new room and add the user to that room.
@@ -29,8 +29,7 @@ export default class RoomManager {
       if (existingRoom?.status === 2) return { error: 'Room has already started' }
       existingRoom.users.push(user);
     } else {
-      this.allRooms.push({ id: room, users: [], status: 0, maxplayers: this.config.max_players });
-      this.allRooms.find((roomItem: IRoom) => roomItem.id === room)?.users.push(user);
+      this.allRooms.push({ id: room, users: [user], status: 0, maxplayers: this.config.max_players, questions: this.config.randomize(this.config.questions_lists) });
     }
 
     return { user }

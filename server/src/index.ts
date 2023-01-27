@@ -8,6 +8,7 @@ import router from './router'
 import RoomManager from './Classes/rooms'
 import userEvents from './Events/UserEvents'
 import roomEvents from './Events/RoomEvents'
+import gameEvents from './Events/GameEvents'
 
 const rooms = new RoomManager();
 
@@ -29,6 +30,7 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   userEvents(socket, rooms, io)
   roomEvents(socket, rooms, io)
+  gameEvents(socket, rooms, io)
 });
 
 app.use(router);
