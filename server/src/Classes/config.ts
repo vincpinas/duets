@@ -1,5 +1,4 @@
 import questions_lists from "../Data/questions";
-import { QuestionList } from "../Interfaces/game"
 
 export class RoomConfig {
   public max_players: number;

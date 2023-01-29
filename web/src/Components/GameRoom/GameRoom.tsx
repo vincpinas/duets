@@ -1,15 +1,9 @@
 import { useState } from "react";
 import { Socket } from "socket.io-client";
-import { GameData } from "../../Interfaces/server";
 import GameIntro from "../GameIntro/GameIntro";
 import "./GameRoom.scss";
 
-interface GRProps {
-  roomData: GameData;
-  socket: Socket;
-}
-
-function GameRoom({ roomData, socket }: GRProps) {
+function GameRoom({ roomData, socket }: GameRoomProps) {
   const [intro, setIntro] = useState(true);
 
   return (

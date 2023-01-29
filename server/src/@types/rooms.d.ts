@@ -1,12 +1,10 @@
-import { QuestionList } from "./game";
-
-export interface IUser {
+interface IUser {
   id: string;
   name: string;
   room: string;
 }
 
-export interface IRoom {
+interface IRoom {
   id: string;
   users: IUser[];
   status: number;

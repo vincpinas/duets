@@ -24,9 +24,11 @@ function App() {
         : languages[0]
   );
 
+  const [alerts, setAlerts] = useState<alert[]>([]);
+
   return (
     <AudioProvider>
-      <LanguageProvider lang={selectedLang} setLang={setSelectedLang}>
+      <LanguageProvider lang={selectedLang} setLang={setSelectedLang} alerts={alerts} setAlerts={setAlerts}>
         <Menu />
         <Helmet />
         <Routes>

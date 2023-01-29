@@ -1,8 +1,7 @@
 import { createContext, useContext, useRef, useState, useEffect } from "react";
 import { joinMusic, sfx } from "./audiofiles";
-import { LPProps, InitialStateType, SFXOptions } from "./interfaces";
 
-const INITIAL_STATE: InitialStateType = {
+const INITIAL_STATE: AudioProviderInitialState = {
   audioRef: null,
   src: "",
   setSrc: () => { },

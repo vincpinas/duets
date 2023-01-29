@@ -8,22 +8,9 @@ import { useAudioContext } from '../Audio/AudioProvider';
 import { sfx } from '../Audio/audiofiles';
 import './RoomList.scss'
 
-interface IRoom {
-  id: string;
-  users: [];
-  status: number;
-  maxplayers: number;
-}
-
-interface RoomListProps {
-  duration: number;
-  setTransition: (state: boolean) => void;
-  transition: boolean;
-}
-
 function RoomList({ duration, setTransition, transition }: RoomListProps) {
   const navigate = useNavigate();
-  const [roomList, setRoomList] = useState<IRoom[] | []>([]);
+  const [roomList, setRoomList] = useState<RoomInterface[] | []>([]);
   const [generatedName, setGeneratedName] = useState<string>("");
   const { dict } = useLanguageContext();
   const { createSFX } = useAudioContext();
@@ -37,14 +24,14 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
 
   useEffect(() => {
     if (!fetched.current) {
-      socket.emit('room-list', (rooms: IRoom[]) => setRoomList(rooms));
+      socket.emit('room-list', (rooms: RoomInterface[]) => setRoomList(rooms));
       fetched.current = true
     }
 
     setGeneratedName(uniqueNamesGenerator(nameConfig))
 
     setTimeout(() => {
-      socket.emit('room-list', (rooms: IRoom[]) => setRoomList(rooms));
+      socket.emit('room-list', (rooms: RoomInterface[]) => setRoomList(rooms));
     }, 5000)
   }, [roomList])
 

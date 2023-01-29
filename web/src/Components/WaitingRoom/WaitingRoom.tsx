@@ -1,13 +1,8 @@
-import { GameData } from '../../Interfaces/server';
 import { socket } from '../../service';
 import RoomHeader from '../RoomHeader/RoomHeader';
 import './WaitingRoom.scss'
 
-interface WRProps {
-  roomData: GameData | undefined;
-}
-
-function WaitingRoom({ roomData }: WRProps) {
+function WaitingRoom({ roomData }: WaitingRoomProps) {
   return (
     <div className='c-waitingroom'>
       <RoomHeader roomData={roomData} />

@@ -1,5 +1,3 @@
-import { QuestionList } from "../Interfaces/game";
-
 const questions_lists: QuestionList[] = [
   {
     name: "Colin",

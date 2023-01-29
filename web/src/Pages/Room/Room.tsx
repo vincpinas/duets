@@ -4,7 +4,6 @@ import { socket } from "../../service";
 import "./Room.scss"
 import WaitingRoom from "../../Components/WaitingRoom/WaitingRoom";
 import GameRoom from "../../Components/GameRoom/GameRoom";
-import { GameData } from "../../Interfaces/server";
 
 function Room() {
   const navigate = useNavigate();

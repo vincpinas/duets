@@ -1,14 +1,7 @@
 import { useEffect } from "react";
 import "./GameIntro.scss";
 
-interface GIProps {
-  title: string;
-  text?: string;
-  duration?: number;
-  setter: (state: boolean) => void
-}
-
-function GameIntro({ title, text, duration, setter }: GIProps) {
+function GameIntro({ title, text, duration, setter }: GameIntroProps) {
   const animationIntro = {
     animation: `fade-out ${duration || 4000 / 5}ms cubic-bezier(0.175, 0.885, 0.32, 1.275) ${duration || 4000 / 5 * 4}ms forwards`
   }

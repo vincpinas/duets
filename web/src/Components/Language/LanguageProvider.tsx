@@ -1,29 +1,18 @@
-import { createContext, Dispatch, ReactNode, useContext, useEffect, useState } from "react";
-import { translations, language, languages } from './languages'
+import { createContext, useContext, useEffect, useState } from "react";
+import { translations, languages } from './languages'
 
-// Interfaces
-interface LPProps {
-  children: ReactNode;
-  lang: language;
-  setLang: Dispatch<any>;
-};
-
-interface InitialStateType {
-  dict: any;
-  lang: language;
-  setLang: Dispatch<language>;
-}
-
-const INITIAL_STATE: InitialStateType = {
+const INITIAL_STATE: LanguageProviderInitialState = {
   dict: translations.english,
   lang: languages[0],
   setLang: () => { },
+  alerts: [],
+  setAlerts: () => { },
 }
 
 // Context initialization
 export const LanguageContext = createContext(INITIAL_STATE);
 
-export const LanguageProvider = ({ children, lang, setLang }: LPProps) => {
+export const LanguageProvider = ({ children, lang, setLang, alerts, setAlerts }: LanguageProviderProps) => {
   const getDictionary = () => {
     switch (lang.abbreviation) {
       case "EN":
@@ -37,15 +26,20 @@ export const LanguageProvider = ({ children, lang, setLang }: LPProps) => {
     }
   }
   const [currentDictionary, setCurrentDictionary] = useState(getDictionary())
-  
+
   useEffect(() => {
     setCurrentDictionary(getDictionary())
   }, [lang])
 
   return (
     <LanguageContext.Provider
-      value={{ dict: currentDictionary, lang: lang, setLang }}
+      value={{ dict: currentDictionary, lang: lang, setLang, alerts, setAlerts }}
     >
+      {alerts.map((alert) => {
+        return (
+          <span>{alert.text}</span>
+        )
+      })}
       {children}
     </LanguageContext.Provider>
   )

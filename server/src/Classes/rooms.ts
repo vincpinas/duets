@@ -1,4 +1,3 @@
-import { IUser, IRoom } from "../Interfaces/rooms";
 import { RoomConfig } from "./config";
 
 export default class RoomManager {

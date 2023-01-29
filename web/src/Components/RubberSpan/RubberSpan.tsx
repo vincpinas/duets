@@ -1,14 +1,6 @@
 import './RubberSpan.scss'
 
-interface RSProps {
-    letters: string;
-    margin?: number|string;
-    hero?: boolean;
-    emoji?: string;
-    br?: boolean;
-}
-
-function RubberSpan({ letters, margin = 5, hero, emoji, br }: RSProps) {
+function RubberSpan({ letters, margin = 5, hero, emoji, br }: RubberSpanProps) {
     let letterArray: string[] = [];
 
     let split = letters.split("");

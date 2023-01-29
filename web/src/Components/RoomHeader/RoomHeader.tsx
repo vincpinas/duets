@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { GameData } from '../../Interfaces/server';
 import { useLanguageContext } from '../Language/LanguageProvider'
 import './RoomHeader.scss'
 
-interface RHeaderProps {
-  roomData: GameData | undefined;
-}
-
-function RoomHeader({ roomData }: RHeaderProps) {
+function RoomHeader({ roomData }: RoomHeaderProps) {
   const { dict } = useLanguageContext();
   const [dots, setDots] = useState("");
   const dotsMove = (dots: string) => {

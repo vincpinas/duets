@@ -1,16 +1,16 @@
-export interface Player {
+interface Player {
   id: string;
   name: string;
   room: string;
 }
 
-export interface QuestionList {
+interface QuestionList {
   name: string;
   description: string;
   questions: Question[];
 }
 
-export interface Question {
+interface Question {
   question: string;
   answers: { a: string; c: boolean | number; }[];
 }
