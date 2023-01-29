@@ -7,6 +7,7 @@ interface RubberSpanProps {
 }
 
 interface alert {
+  id: string;
   text: string;
   type?: number;
 }
@@ -30,19 +31,13 @@ interface LanguageProviderInitialState {
   dict: any;
   lang: language;
   setLang: Dispatch<language>;
-  alerts: alert[];
-  setAlerts: Dispatch<alert>;
+  createAlert: (text: string) => void;
+  clearAlerts: () => void;
+  blockAlerts: () => void;
 }
 
 interface WaitingRoomProps {
   roomData: GameData | undefined;
-}
-
-interface RoomInterface {
-  id: string;
-  users: [];
-  status: number;
-  maxplayers: number;
 }
 
 interface RoomListProps {
@@ -84,4 +79,8 @@ interface AudioProviderInitialState {
   playing: boolean;
   setPlaying: React.Dispatch<boolean>;
   createSFX: (src: string, options?: SFXOptions) => void,
+}
+
+interface AlertsProps {
+  alerts: alert[];
 }

@@ -37,7 +37,7 @@ function RoomHeader({ roomData }: RoomHeaderProps) {
         {roomData ? roomData.id : null}
       </p>
       <p className='c-roomheader__item'>
-        {roomData ? `${dict.room.players}: ${roomData.users.length} / ${roomData.maxplayers}` : null}
+        {roomData ? `${dict.room.players}: ${roomData.users.length} / ${roomData.max_players}` : null}
       </p>
       <p className='c-roomheader__item c-roomheader__status'>
         {roomData ? `${statusString(roomData.status)}${dots}` : null}

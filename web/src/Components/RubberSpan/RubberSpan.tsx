@@ -1,3 +1,4 @@
+import { uniqueId } from '../../utils';
 import './RubberSpan.scss'
 
 function RubberSpan({ letters, margin = 5, hero, emoji, br }: RubberSpanProps) {
@@ -33,9 +34,9 @@ function RubberSpan({ letters, margin = 5, hero, emoji, br }: RubberSpanProps) {
     return (
         <>
             <span style={rubberContainerStyles}>
-                {letterArray.map((item, index) => {
+                {letterArray.map((item) => {
                     return (
-                        <span key={index} className="blast-text noselect" style={hero ? heroLetter : {}} onMouseOver={changeAnimation} onMouseLeave={resetAnimation}>{item}</span>
+                        <span key={uniqueId()} className="blast-text noselect" style={hero ? heroLetter : {}} onMouseOver={changeAnimation} onMouseLeave={resetAnimation}>{item}</span>
                     )
                 })}
                 <span className="blast-text noselect" onMouseOver={changeAnimation} onMouseLeave={resetAnimation}>{emoji}</span>

@@ -4,16 +4,22 @@ import { socket } from "../../service";
 import "./Room.scss"
 import WaitingRoom from "../../Components/WaitingRoom/WaitingRoom";
 import GameRoom from "../../Components/GameRoom/GameRoom";
+import { useLanguageContext } from "../../Components/Language/LanguageProvider";
 
 function Room() {
   const navigate = useNavigate();
   const { room, name } = useParams();
+  const { clearAlerts, blockAlerts } = useLanguageContext();
   const [roomData, setRoomData] = useState<GameData>();
   const joinedRef = useRef(false);
 
   const messageHandler = (message: { type: string; message: string }) => { if (message.type === "error") navigate("/") }
   const roomUpdateHandler = (info: any) => { setRoomData(info); }
-  const beforeUnload = () => { socket.emit('user-disconnect', { roomId: room }) }
+  const beforeUnload = () => {
+    socket.emit('user-disconnect', { roomId: room })
+    clearAlerts();
+    blockAlerts();
+  }
 
   useEffect(() => {
     if (!room || !name || room === "" || name === "") {
@@ -38,7 +44,7 @@ function Room() {
 
   return (
     <div className="c-room -page -bg-special">
-      { roomData && roomData.status === 2 ? <GameRoom roomData={roomData} socket={socket} /> : <WaitingRoom roomData={roomData} /> }
+      {roomData && roomData.status === 2 ? <GameRoom roomData={roomData} socket={socket} /> : <WaitingRoom roomData={roomData} />}
     </div>
   )
 }

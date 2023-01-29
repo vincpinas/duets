@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { languages } from '../Language/languages'
 import { useLanguageContext } from '../Language/LanguageProvider'
 import Cookies from 'cookies-js'
+import { uniqueId } from '../../utils'
 
 
 function LanguageSelector() {
@@ -36,7 +37,7 @@ function LanguageSelector() {
               }
 
               return (
-                <li key={lang.lang + index}
+                <li key={uniqueId()}
                   onClick={selectLang}
                   className={classname}
                 >

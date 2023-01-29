@@ -19,6 +19,8 @@ interface GameData {
   id: string;
   users: Player[];
   status: number;
-  maxplayers: number;
+  min_players: number;
+  max_players: number;
   questions: QuestionList;
+  start_delay: number;
 }

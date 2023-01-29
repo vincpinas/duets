@@ -1,0 +1,24 @@
+@import "../../Scss/Variables";
+@import "../../Scss/Mixins";
+
+.c-alerts {
+  z-index: $index-3;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 2.5rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  &__alert {
+    @include slide-in-out-animation();
+    @include font--primary(500);
+    border-radius: $border-radius--primary;
+    border: 2px solid darken($background, 15%);
+    padding: 1rem 2rem;
+    margin-bottom: 0.5rem;
+    background-color: $background;
+    color: $background-contrast;
+  }
+}

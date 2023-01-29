@@ -34,6 +34,31 @@
   animation: slide-in 1s $delay forwards !important;
 }
 
+@mixin slide-in-out-animation($delay: 0.2s) {
+  @keyframes slide-in-out {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    10% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+    90% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+  }
+
+  z-index: 1;
+  opacity: 0;
+  animation: slide-in-out 6s $delay forwards !important;
+}
+
 @mixin skewed-hover-animation($tx: 8.5rem, $ty: -4.1rem, $rz: 30deg) {
   @keyframes skewed-hover {
     from {

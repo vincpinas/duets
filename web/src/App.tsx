@@ -14,6 +14,7 @@ import { LanguageProvider } from "./Components/Language/LanguageProvider"
 // Data
 import { languages } from "./Components/Language/languages"
 import { AudioProvider } from "./Components/Audio/AudioProvider"
+import Alerts from "./Components/Alerts/Alerts"
 
 
 
@@ -31,6 +32,7 @@ function App() {
       <LanguageProvider lang={selectedLang} setLang={setSelectedLang} alerts={alerts} setAlerts={setAlerts}>
         <Menu />
         <Helmet />
+        <Alerts alerts={alerts} />
         <Routes>
           <Route path="/" element={<Join />} />
           <Route path="/room/:room/:name" element={<Room />} />

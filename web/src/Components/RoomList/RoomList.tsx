@@ -7,10 +7,11 @@ import { useLanguageContext } from '../Language/LanguageProvider';
 import { useAudioContext } from '../Audio/AudioProvider';
 import { sfx } from '../Audio/audiofiles';
 import './RoomList.scss'
+import { uniqueId } from '../../utils';
 
 function RoomList({ duration, setTransition, transition }: RoomListProps) {
   const navigate = useNavigate();
-  const [roomList, setRoomList] = useState<RoomInterface[] | []>([]);
+  const [roomList, setRoomList] = useState<GameData[] | []>([]);
   const [generatedName, setGeneratedName] = useState<string>("");
   const { dict } = useLanguageContext();
   const { createSFX } = useAudioContext();
@@ -24,20 +25,20 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
 
   useEffect(() => {
     if (!fetched.current) {
-      socket.emit('room-list', (rooms: RoomInterface[]) => setRoomList(rooms));
+      socket.emit('room-list', (rooms: GameData[]) => setRoomList(rooms));
       fetched.current = true
     }
 
     setGeneratedName(uniqueNamesGenerator(nameConfig))
 
     setTimeout(() => {
-      socket.emit('room-list', (rooms: RoomInterface[]) => setRoomList(rooms));
+      socket.emit('room-list', (rooms: GameData[]) => setRoomList(rooms));
     }, 5000)
   }, [roomList])
 
   const stringToSpan = (s: string) => {
     return s.split("").map((item, i) => {
-      return <span key={"c-roomlist__title" + item + i}>{item}</span>
+      return <span key={uniqueId()}>{item}</span>
     })
   }
 
@@ -59,7 +60,7 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
           return (
             <li onClick={() => submit(room.id)} key={room.id} className="c-roomlist__room">
               <Link to={`/room/${room.id}/${generatedName}`} onClick={(e) => e.preventDefault()}>
-                <span>{room.users.length} / {room.maxplayers}</span>
+                <span>{room.users.length} / {room.max_players}</span>
                 <span>{room.id.toUpperCase()}</span>
               </Link>
             </li>
