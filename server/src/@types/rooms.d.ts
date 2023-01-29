@@ -8,6 +8,8 @@ interface IRoom {
   id: string;
   users: IUser[];
   status: number;
-  maxplayers: number;
+  min_players: number;
+  max_players: number;
   questions: QuestionList;
+  start_delay: number;
 }

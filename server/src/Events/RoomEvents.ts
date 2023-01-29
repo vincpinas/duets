@@ -4,7 +4,7 @@ import RoomManager from "../Classes/rooms";
 export default function roomEvents(socket: Socket, rooms: RoomManager, io: Server) {
   // Return room data on request.
   socket.on("room-list", (callback) => {
-    let temp = rooms.allRooms.filter((room: IRoom) => room.status !== 2 && room.users.length < room.maxplayers);
+    let temp = rooms.allRooms.filter((room: IRoom) => room.status !== 2 && room.users.length < room.max_players);
 
     callback(temp);
   });

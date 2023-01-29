@@ -28,7 +28,15 @@ export default class RoomManager {
       if (existingRoom?.status === 2) return { error: 'Room has already started' }
       existingRoom.users.push(user);
     } else {
-      this.allRooms.push({ id: room, users: [user], status: 0, maxplayers: this.config.max_players, questions: this.config.randomize(this.config.questions_lists) });
+      this.allRooms.push({
+        id: room,
+        users: [user],
+        status: 0,
+        min_players: this.config.min_players,
+        max_players: this.config.max_players,
+        questions: this.config.randomize(this.config.questions_lists),
+        start_delay: this.config.start_delay,
+      });
     }
 
     return { user }
