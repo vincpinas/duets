@@ -1,5 +1,6 @@
 export interface QuestionList {
   name: string;
+  description: string;
   questions: Question[];
 }
 
