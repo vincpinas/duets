@@ -9,11 +9,15 @@ export class RoomConfig {
 
   constructor() {
     this.max_players = 15;
-    this.min_players = 1;
-    this.start_delay = 1000;
+    this.min_players = 4;
+    this.start_delay = 15000;
     this.questions_lists = questions_lists;
   }
 
+  /* 
+    Returns either a random number between range 1 and variable (number) or
+    a random item in variable (array) depending on variable type.
+  */
   randomize(variable: number | Array<any>) {
     switch (typeof variable) {
       case "number":

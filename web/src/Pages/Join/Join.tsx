@@ -4,6 +4,7 @@ import { sfx } from "../../Components/Audio/audiofiles";
 import { useAudioContext } from "../../Components/Audio/AudioProvider";
 import { useLanguageContext } from "../../Components/Language/LanguageProvider";
 import RoomList from "../../Components/RoomList/RoomList";
+import RubberSpan from "../../Components/RubberSpan/RubberSpan";
 import "./Join.scss"
 
 function Join() {
@@ -24,7 +25,7 @@ function Join() {
     const target = e.target as HTMLInputElement
 
     if (validate(target.value, regex)) {
-      setFunc(target.value.toLowerCase());
+      setFunc(target.value);
 
       if (ref?.current) {
         ref.current.focus()
@@ -49,12 +50,12 @@ function Join() {
 
   return (
     <>
-      { transition ? <div className="c-join__transition -transition"></div> : null}
+      {transition ? <div className="c-join__transition -transition"></div> : null}
       <RoomList setTransition={setTransition} duration={duration} transition={transition} />
       <main className="c-join -page -bg-special">
         <div className="c-join__titles -noselect">
-          <h1 className="c-join__title">Duets!</h1>
-          <h4 className="c-join__subTitle">Beta</h4>
+          <h1 className="c-join__title"><RubberSpan letters="Duets!" /></h1>
+          <h4 className="c-join__subTitle"><RubberSpan letters="Beta" /></h4>
         </div>
         <form className="c-join__form">
           <input

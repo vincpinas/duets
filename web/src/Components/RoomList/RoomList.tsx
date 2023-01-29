@@ -64,14 +64,14 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
     }
   }
 
-  return (
+  if (roomList.length > 0) return (
     <div className='c-roomlist -noselect'>
       <h4 className='c-roomlist__title'>{stringToSpan(dict.join.rooms)}</h4>
       <ul className='c-roomlist__list'>
         {roomList.map((room) => {
           return (
             <li onClick={() => submit(room.id)} key={room.id} className="c-roomlist__room">
-              <Link to={`/room/${room.id}/${generatedName}`} onClick={(e) => e.preventDefault() }>
+              <Link to={`/room/${room.id}/${generatedName}`} onClick={(e) => e.preventDefault()}>
                 <span>{room.users.length} / {room.maxplayers}</span>
                 <span>{room.id.toUpperCase()}</span>
               </Link>
@@ -81,6 +81,8 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
       </ul>
     </div>
   )
+
+  return null;
 }
 
 export default RoomList

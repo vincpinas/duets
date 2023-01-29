@@ -43,10 +43,11 @@ export const languages: language[] = [
 export const translations = {
   english: {
     helmet: {
-      join: "Enter room PIN"
+      join: "Enter room PIN",
+      room: "Have fun!"
     },
     join: {
-      footer: "This project was made for my last day of internship at",
+      footer: "This project was made for my internship at",
       button: "Enter",
       room: "Room PIN",
       name: "Name",
@@ -62,10 +63,11 @@ export const translations = {
 
   dutch: {
     helmet: {
-      join: "Voer kamer-PIN in"
+      join: "Voer kamer-PIN in",
+      room: "Veel plezier!"
     },
     join: {
-      footer: "Dit project is gemaakt voor mijn laatste dag stage bij",
+      footer: "Dit project is gemaakt voor mijn stage bij",
       button: "Invoeren",
       room: "Kamer-Pin",
       name: "Naam",
@@ -81,10 +83,11 @@ export const translations = {
 
   spanish: {
     helmet: {
-      join: "Entrar PIN de habitación"
+      join: "Entrar PIN de habitación",
+      room: "Que te diviertas!"
     },
     join: {
-      footer: "Esto proyecto fue hecho para mi último día de prácticas a",
+      footer: "Esto proyecto fue hecho para mi prácticas a",
       button: "Entrar",
       room: "PIN de habitación",
       name: "Nombre",

@@ -9,16 +9,17 @@ function Helmet() {
   const title = "Duets";
   const seperator = String.fromCharCode(0x2022) + " " + title;
   const locations = [
-    { url: `/room`, title: `` },
     { url: `/`, title: `${dict.helmet.join} ${seperator}` },
+    { url: `/room`, title: `${dict.helmet.room} ${seperator}` },
   ]
 
   useEffect(() => {
+    
     document.title = (() => {
       let returnValue = title;
-
+      
       locations.forEach(loc => {
-        if (loc.url.includes(location.pathname)) returnValue = loc.title
+        if (location.pathname.includes(loc.url)) returnValue = loc.title
       });
 
       return returnValue ? returnValue : title
