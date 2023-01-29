@@ -76,3 +76,12 @@
   opacity: 0;
   animation: fade-in $dur $bezier $delay forwards;
 }
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

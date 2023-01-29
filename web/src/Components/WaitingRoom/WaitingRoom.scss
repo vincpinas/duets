@@ -20,7 +20,7 @@
     line-height: 20px;
     background-color: $background-contrast;
     padding: 0.5rem 2rem;
-    color: $background;
+    color: darken($color-green, 50%);
     border: 1px solid darken($background-contrast, 2.5%);
     box-shadow: $box-shadow--secondary;
     transition: $transition-normal;
