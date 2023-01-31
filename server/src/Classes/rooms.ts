@@ -1,4 +1,5 @@
 import { RoomConfig } from "./config";
+import { IncomingUserData, IRoom, IUser } from "../@types/rooms";
 
 export default class RoomManager {
   allRooms: IRoom[];
@@ -10,7 +11,7 @@ export default class RoomManager {
   }
 
   // Add user to a room if the room exists, otherwise create a new room and add the user to that room.
-  addUser({ id, name, room }: IUser) {
+  addUser({ id, name, room }: IncomingUserData) {
     if (!name && !room) return { error: 'No name & no room was provided' }
     if (!name) return { error: 'No name was provided' }
     if (!room) return { error: 'No room was provided' }
@@ -20,7 +21,7 @@ export default class RoomManager {
 
     const existingRoom = this.allRooms.find((roomItem: IRoom) => roomItem.id === room);
 
-    const user = { id, name, room };
+    const user = { id, name, room, score: 0, questions_answered: 0, };
 
     if (existingRoom) {
       if (existingRoom?.users.find((userItem: IUser) => userItem.name === user.name)) return { error: 'This name is already taken.' }

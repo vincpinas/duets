@@ -1,3 +1,5 @@
+import { Socket } from "socket.io-client";
+
 interface RubberSpanProps {
   letters: string;
   margin?: number|string;
@@ -50,7 +52,7 @@ interface RoomHeaderProps {
   roomData: GameData | undefined;
 }
 
-interface GameRoomProps {
+export interface GameRoomProps {
   roomData: GameData;
   socket: Socket;
 }

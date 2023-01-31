@@ -1,5 +1,6 @@
 import { Server, Socket } from "socket.io";
 import RoomManager from "../Classes/rooms";
+import { IRoom } from "../@types/rooms";
 
 export default function roomEvents(socket: Socket, rooms: RoomManager, io: Server) {
   // Return room data on request.

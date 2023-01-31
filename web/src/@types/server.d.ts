@@ -23,4 +23,6 @@ interface GameData {
   max_players: number;
   questions: QuestionList;
   start_delay: number;
+  winners: Player[];
+  users_done: string[];
 }

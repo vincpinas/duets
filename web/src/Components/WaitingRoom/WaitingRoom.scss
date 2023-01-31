@@ -18,15 +18,16 @@
     @include font--primary(500);
     width: fit-content;
     line-height: 20px;
-    background-color: $background-contrast;
     padding: 0.5rem 2rem;
-    color: darken($color-green, 50%);
     border: 1px solid darken($background-contrast, 2.5%);
     box-shadow: $box-shadow--secondary;
     transition: $transition-normal;
     border-radius: 5px;
-
+    color: darken($color-green, 17.5%);
+    background-color: $background-contrast;
+    
     &__highlight {
+      color: darken($color-green, 50%);
       background-color: darken($color-green, 17.5%);
       border: 1px solid darken($color-green, 17.5%);
     }

@@ -1,3 +1,5 @@
+import { QuestionList } from "../@types/game";
+
 const questions_lists: QuestionList[] = [
   {
     name: "Colin",

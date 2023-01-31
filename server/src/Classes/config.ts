@@ -1,4 +1,5 @@
 import questions_lists from "../Data/questions";
+import { QuestionList } from "../@types/game";
 
 export class RoomConfig {
   public max_players: number;
@@ -8,8 +9,8 @@ export class RoomConfig {
 
   constructor() {
     this.max_players = 15;
-    this.min_players = 4;
-    this.start_delay = 15000;
+    this.min_players = 2;
+    this.start_delay = 2000;
     this.questions_lists = questions_lists;
   }
 
