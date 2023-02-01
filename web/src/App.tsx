@@ -15,6 +15,7 @@ import { LanguageProvider } from "./Components/Language/LanguageProvider"
 import { languages } from "./Components/Language/languages"
 import { AudioProvider } from "./Components/Audio/AudioProvider"
 import Alerts from "./Components/Alerts/Alerts"
+import { alert } from "./@types/client"
 
 
 
@@ -25,7 +26,7 @@ function App() {
         : languages[0]
   );
 
-  const [alerts, setAlerts] = useState<alert[]>([]);
+  const [alerts, setAlerts] = useState<alert[]|[]>([]);
 
   return (
     <AudioProvider>
