@@ -1,9 +1,10 @@
 import express from 'express';
+import cors, { CorsOptions } from 'cors';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-   res.send(
-       `<!DOCTYPE html>
+    res.send(
+        `<!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="utf-8" />
@@ -45,6 +46,19 @@ router.get('/', (req, res) => {
 
 router.get('/health', (req, res) => {
     res.send("health");
- });
+});
+
+const corsOptions: CorsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200,
+}
+
+router.get('/server', cors(corsOptions), (req, res) => {
+    res.json({ 
+        version: "V1.1",
+        status: process.env.STATUS || 1,
+        
+    });
+});
 
 export default router;

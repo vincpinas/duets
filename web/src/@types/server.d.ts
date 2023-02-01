@@ -28,3 +28,8 @@ interface GameData {
   winners: Player[];
   users_done: string[];
 }
+
+interface ServerInfo {
+  version: string;
+  status: number;
+}

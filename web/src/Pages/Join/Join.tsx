@@ -1,10 +1,11 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { sfx } from "../../Components/Audio/audiofiles";
 import { useAudioContext } from "../../Components/Audio/AudioProvider";
 import { useLanguageContext } from "../../Components/Language/LanguageProvider";
 import RoomList from "../../Components/RoomList/RoomList";
 import RubberSpan from "../../Components/RubberSpan/RubberSpan";
+import { ENDPOINT } from "../../service";
 import "./Join.scss"
 
 function Join() {
@@ -14,6 +15,7 @@ function Join() {
   const [room, setRoom] = useState("");
   const [name, setName] = useState("");
   const [transition, setTransition] = useState(false);
+  const [server, setServer] = useState<ServerInfo | null>(null);
   const duration = 1000
   const sElem = useRef<HTMLInputElement>(null);
 
@@ -33,6 +35,17 @@ function Join() {
     }
     else setFunc("")
   }
+
+  useEffect(() => {
+    fetch(`${ENDPOINT}/server`)
+      .then((res) => res.json())
+      .then((data: ServerInfo) => setServer(data));
+
+    }, [])
+    console.log(server)
+
+
+
 
   const submit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -55,7 +68,7 @@ function Join() {
       <main className="c-join -page -bg-special">
         <div className="c-join__titles -noselect">
           <h1 className="c-join__title"><RubberSpan letters="Duets!" /></h1>
-          <h4 className="c-join__subTitle"><RubberSpan letters="Beta" /></h4>
+          <h4 className="c-join__subTitle"><RubberSpan letters={`${server?.version}`} /></h4>
         </div>
         <form className="c-join__form">
           <input

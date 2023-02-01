@@ -83,7 +83,7 @@ export const translations = {
       button: "Entrar",
       room: "PIN de habitación",
       name: "Nombre",
-      rooms: "Habitaciones abiertas",
+      rooms: "Habitaciones",
     },
     room: {
       wait: "Esperando",

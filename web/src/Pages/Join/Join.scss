@@ -29,11 +29,11 @@
   &__subTitle {
     margin: 0;
     @include font--secondary(500);
-    transform: translateX(8.5rem) translateY(-4.4rem) rotateZ(30deg);
+    transform: translateX(8.8rem) translateY(-4.2rem) rotateZ(30deg);
     @include scale-hover-animation(1.05);
 
     @media #{$mobile-down} {
-      transform: translateX(4.5rem) translateY(-3.5rem) rotateZ(30deg);
+      transform: translateX(4.8rem) translateY(-3.4rem) rotateZ(30deg);
     }
   }
 
