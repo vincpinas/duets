@@ -6,6 +6,7 @@
   flex-direction: column;
   position: relative;
   @include slide-in-animation;
+  z-index: $index-4 !important;
 
   &__listWrapper {
     position: absolute;
