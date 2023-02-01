@@ -1,4 +1,5 @@
 import { createContext, useContext, useRef, useState, useEffect } from "react";
+import { AudioProviderInitialState, LPProps, SFXOptions } from "../../@types/client";
 import { joinMusic, sfx } from "./audiofiles";
 
 const INITIAL_STATE: AudioProviderInitialState = {

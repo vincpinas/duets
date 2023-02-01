@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { WaitingRoomProps } from "../../@types/client";
 import { socket } from '../../service';
 import { useLanguageContext } from '../Language/LanguageProvider';
 import RoomHeader from '../RoomHeader/RoomHeader';

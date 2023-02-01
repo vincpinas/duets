@@ -1,3 +1,4 @@
+import { RubberSpanProps } from '../../@types/client';
 import { uniqueId } from '../../utils';
 import './RubberSpan.scss'
 

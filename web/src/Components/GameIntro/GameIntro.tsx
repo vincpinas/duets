@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { GameIntroProps } from "../../@types/client";
 import "./GameIntro.scss";
 
 function GameIntro({ title, text, duration, setter }: GameIntroProps) {

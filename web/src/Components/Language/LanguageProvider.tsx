@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { LanguageProviderInitialState, LanguageProviderProps } from "../../@types/client";
 import { uniqueId } from "../../utils";
 import { translations, languages } from './languages'
 

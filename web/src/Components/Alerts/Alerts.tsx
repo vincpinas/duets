@@ -1,3 +1,4 @@
+import { AlertsProps } from "../../@types/client"
 import { uniqueId } from "../../utils"
 import "./Alerts.scss"
 

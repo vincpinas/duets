@@ -1,3 +1,5 @@
+import { language } from "../../@types/client";
+
 // Static list of available languages
 export const languages: language[] = [
   {
