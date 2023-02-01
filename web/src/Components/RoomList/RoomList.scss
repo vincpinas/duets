@@ -9,6 +9,10 @@
   right: 0;
   top: 50%;
   margin-right: 1rem;
+  
+  @media #{$mobile-down} {
+    top: 8%;
+  }
 
   @include slide-in-animation(0.5s);
 
@@ -46,9 +50,11 @@
     @include font--primary(300);
     line-height: 20px;
     width: 100%;
+    z-index: $index-2;
   }
 
   &__room {
+    z-index: $index-2;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -67,8 +73,30 @@
     }
   }
 
-  &__room span:last-of-type {
-    margin-left: auto;
+  &__room span:first-of-type {
+    margin-right: 1.5rem;
+  }
+
+  &__roomPlayers .tooltip {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    top: 0% !important;
+    left: -60% !important;
+
+    &::after {
+      left: 103% !important;
+      top: 10px !important;
+      bottom: unset;
+      transform: rotate(270deg) !important;
+    }
+
+    span {
+      line-height: 15px;
+      color: $color-green;
+      text-align: left;
+    }
   }
   
   &__room a {

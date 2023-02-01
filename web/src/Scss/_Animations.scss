@@ -73,6 +73,27 @@
   animation: skewed-hover 2s ease-in-out infinite alternate-reverse;
 }
 
+@keyframes hover {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes slam {
+  from {
+    opacity: 0;
+    scale: 5;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
 @mixin scale-hover-animation($target: 1.05, $dur: 2s) {
   @keyframes scale-hover {
     from {

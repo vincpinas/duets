@@ -1,0 +1,132 @@
+@import "../../Scss/Variables";
+@import "../../Scss/Mixins";
+
+.c-gameend {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  &__stage {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+
+    &Placing {
+      @include font--secondary(500);
+      margin: 0 0.25rem 0 0.25rem;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &Outline {
+      display: flex;
+      flex-direction: column;
+      border-top-left-radius: $border-radius--primary;
+      border-top-right-radius: $border-radius--primary;
+      border-left: 2px solid black;
+      border-right: 2px solid black;
+      border-top: 2px solid black;
+      margin-top: 1rem;
+      text-align: center;
+
+      span {
+        line-height: 20px;
+      }
+
+      span:nth-of-type(2) {
+        font-size: 13px;
+      }
+    }
+
+    &Winner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      span {
+        line-height: 16px;
+      }
+    }
+
+    &Placing:nth-of-type(1) {
+      .c-gameend__stageOutline {
+        padding: 5rem 4rem;
+
+        @media #{$mobile-down} {
+          padding: 2.5rem 2rem;
+        }
+      }
+
+      .c-gameend__stageWinner {
+        animation: slam 0.8s ease-in-out 1s forwards;
+      }
+
+      .c-crown {
+        animation: hover 2s ease-in-out 0.15s infinite alternate;
+      }
+
+      #Crown {
+        #Top, #JewelLeft, #JewelRight, #Logo {
+          fill: $color-silver;
+        }
+      }
+    }
+
+    &Placing:nth-of-type(2) {
+      .c-gameend__stageOutline {
+        padding: 6rem 4rem;
+
+        @media #{$mobile-down} {
+          padding: 3rem 2rem;
+        }
+      }
+
+      .c-gameend__stageWinner {
+        animation: slam 0.8s ease-in-out 1.5s forwards;
+      }
+
+      .c-crown {
+        animation: hover 2s ease-in-out 0s infinite alternate;
+      }
+
+      #Crown {
+        #Top, #JewelLeft, #JewelRight, #Logo {
+          fill: $color-gold;
+        }
+      }
+    }
+
+    &Placing:nth-of-type(3) {
+      .c-gameend__stageOutline {
+        padding: 4rem 4rem;
+
+        @media #{$mobile-down} {
+          padding: 2rem 2rem;
+        }
+      }
+
+      .c-gameend__stageWinner {
+        animation: slam 0.8s ease-in-out 0.5s forwards;
+      }
+
+      .c-crown {
+        animation: hover 2s ease-in-out 0.3s infinite alternate;
+      }
+
+
+      #Crown {
+        #Top, #JewelLeft, #JewelRight, #Logo {
+          fill: $color-bronze;
+        }
+
+      }
+    }
+  }
+}

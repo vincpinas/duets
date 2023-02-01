@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { uniqueNamesGenerator, Config, adjectives, colors, animals } from 'unique-names-generator';
 import { Link } from 'react-router-dom';
 import { socket } from '../../service'
@@ -8,6 +8,8 @@ import { useAudioContext } from '../Audio/AudioProvider';
 import { sfx } from '../Audio/audiofiles';
 import './RoomList.scss'
 import { uniqueId } from '../../utils';
+import Tooltip from '../Tooltip/Tooltip';
+import { RoomListProps } from '../../@types/client';
 
 function RoomList({ duration, setTransition, transition }: RoomListProps) {
   const navigate = useNavigate();
@@ -57,13 +59,21 @@ function RoomList({ duration, setTransition, transition }: RoomListProps) {
       <h4 className='c-roomlist__title'>{stringToSpan(dict.join.rooms)}</h4>
       <ul className='c-roomlist__list'>
         {roomList.map((room) => {
+          let tooltext = room.users.map((user) => {
+            return (
+              <span key={uniqueId()}>{ String.fromCharCode(0x2022) } { user.name }</span>
+            )
+          })
+          
           return (
-            <li onClick={() => submit(room.id)} key={room.id} className="c-roomlist__room">
-              <Link to={`/room/${room.id}/${generatedName}`} onClick={(e) => e.preventDefault()}>
-                <span>{room.users.length} / {room.max_players}</span>
-                <span>{room.id.toUpperCase()}</span>
-              </Link>
-            </li>
+            <Tooltip key={room.id} text={tooltext} className="c-roomlist__roomPlayers">
+              <li onClick={() => submit(room.id)} className="c-roomlist__room">
+                <Link to={`/room/${room.id}/${generatedName}`} onClick={(e) => e.preventDefault()}>
+                  <span>{room.users.length} / {room.max_players}</span>
+                  <span>{room.id.toUpperCase()}</span>
+                </Link>
+              </li>
+            </Tooltip>
           )
         })}
       </ul>

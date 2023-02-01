@@ -2,6 +2,8 @@ interface Player {
   id: string;
   name: string;
   room: string;
+  questions_answered?: number;
+  score?: number;
 }
 
 interface QuestionList {

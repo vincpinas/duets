@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { RoomHeaderProps } from '../../@types/client';
 import { useLanguageContext } from '../Language/LanguageProvider'
 import './RoomHeader.scss'
 

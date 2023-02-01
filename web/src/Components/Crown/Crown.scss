@@ -1,0 +1,19 @@
+@import "../../Scss/Animations";
+
+.c-crown {
+  margin-bottom: 1rem;
+}
+
+#Crown {
+  #Middle {
+    fill: var(--special-secondary);
+  }
+
+  #BottomOuter {
+    fill: var(--special-darker);
+  }
+
+  #BottomInner {
+    fill: var(--special-dark);
+  }
+}
