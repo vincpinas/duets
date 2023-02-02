@@ -65,7 +65,7 @@
       }
 
       .c-gameend__stageWinner {
-        animation: slam 0.8s ease-in-out 1s forwards;
+        @include slam-animation(1s);
       }
 
       .c-crown {
@@ -89,7 +89,7 @@
       }
 
       .c-gameend__stageWinner {
-        animation: slam 0.8s ease-in-out 1.5s forwards;
+        @include slam-animation(1.5s);
       }
 
       .c-crown {
@@ -113,7 +113,7 @@
       }
 
       .c-gameend__stageWinner {
-        animation: slam 0.8s ease-in-out 0.5s forwards;
+        @include slam-animation(0.5s);
       }
 
       .c-crown {
