@@ -36,6 +36,7 @@ export const languages: language[] = [
 
 export const translations = {
   english: {
+    connecting: "Connecting",
     helmet: {
       join: "Enter room PIN",
       room: "Have fun!"
@@ -75,6 +76,7 @@ export const translations = {
   },
 
   dutch: {
+    connecting: "Verbinden",
     helmet: {
       join: "Voer kamer-PIN in",
       room: "Veel plezier!"
@@ -114,6 +116,7 @@ export const translations = {
   },
 
   spanish: {
+    connecting: "Conectando",
     helmet: {
       join: "Entrar PIN de habitación",
       room: "Que te diviertas!"

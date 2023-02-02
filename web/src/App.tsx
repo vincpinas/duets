@@ -10,7 +10,7 @@ import Menu from "./Components/Menu/Menu"
 import Join from "./Pages/Join/Join"
 import Room from "./Pages/Room/Room"
 // Context
-import { LanguageProvider } from "./Components/Language/LanguageProvider"
+import { LanguageProvider, useLanguageContext } from "./Components/Language/LanguageProvider"
 // Data
 import { languages } from "./Components/Language/languages"
 import { AudioProvider } from "./Components/Audio/AudioProvider"
@@ -41,7 +41,7 @@ function App() {
             <Route path="/room/:room/:name" element={<Room />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
-          : <Connecting setConnected={setConnected} text="Connecting" />}
+          : <Connecting setConnected={setConnected} />}
       </LanguageProvider>
     </AudioProvider>
   )

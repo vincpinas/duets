@@ -23,7 +23,6 @@ interface language {
 
 interface ConnectingProps {
   setConnected: (state: boolean) => void;
-  text: string;
 }
 
 interface LanguageProviderProps {
