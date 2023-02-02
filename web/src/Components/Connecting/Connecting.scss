@@ -1,0 +1,24 @@
+@import "../../Scss/Mixins";
+
+.c-connecting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &__title {
+    @include font--secondary;
+  }
+
+  &__letter {
+    display: inline-block;
+  }
+
+  @for $i from 1 through 20 {
+    &__letter:nth-of-type(#{$i}) {
+      animation: rubberBand 2s ease-in-out $i * 0.12s infinite alternate-reverse;
+    }
+  }
+
+}

@@ -16,17 +16,18 @@ import { languages } from "./Components/Language/languages"
 import { AudioProvider } from "./Components/Audio/AudioProvider"
 import Alerts from "./Components/Alerts/Alerts"
 import { alert } from "./@types/client"
+import Connecting from "./Components/Connecting/Connecting"
 
 
 
 function App() {
+  const [connected, setConnected] = useState(false);
   const [selectedLang, setSelectedLang] = useState(
     Cookies.get('lang') ? JSON.parse(Cookies.get('lang')) :
       languages.find(o => navigator.language.includes(o.abbreviation.toLocaleLowerCase())) ? languages.find(o => navigator.language.includes(o.abbreviation.toLocaleLowerCase()))
         : languages[0]
   );
-
-  const [alerts, setAlerts] = useState<alert[]|[]>([]);
+  const [alerts, setAlerts] = useState<alert[] | []>([]);
 
   return (
     <AudioProvider>
@@ -34,11 +35,13 @@ function App() {
         <Menu />
         <Helmet />
         <Alerts alerts={alerts} />
-        <Routes>
-          <Route path="/" element={<Join />} />
-          <Route path="/room/:room/:name" element={<Room />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        {connected ?
+          <Routes>
+            <Route path="/" element={<Join />} />
+            <Route path="/room/:room/:name" element={<Room />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+          : <Connecting setConnected={setConnected} text="Connecting" />}
       </LanguageProvider>
     </AudioProvider>
   )

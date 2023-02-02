@@ -21,6 +21,11 @@ interface language {
   status: number; // 0: Inactive, 1: Active
 }
 
+interface ConnectingProps {
+  setConnected: (state: boolean) => void;
+  text: string;
+}
+
 interface LanguageProviderProps {
   children: ReactNode;
   lang: language;
