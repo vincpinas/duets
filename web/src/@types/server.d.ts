@@ -27,6 +27,7 @@ interface GameData {
   start_delay: number;
   winners: Player[];
   users_done: string[];
+  users_ready: string[];
 }
 
 interface ServerInfo {

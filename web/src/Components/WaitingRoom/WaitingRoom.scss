@@ -3,6 +3,9 @@
 @import "../../Scss/Animations";
 
 .c-waitingroom {
+  height: 100%;
+  width: 100%;
+
   ul {
     width: 70%;
     display: flex;
@@ -25,11 +28,42 @@
     border-radius: 5px;
     color: darken($color-green, 17.5%);
     background-color: $background-contrast;
-    
+
     &__highlight {
       color: darken($color-green, 50%);
       background-color: darken($color-green, 17.5%);
       border: 1px solid darken($color-green, 17.5%);
+    }
+  }
+
+  &__button {
+    background: $background-contrast;
+    margin: 0;
+    color: $background;
+    border: 1px solid darken($background-contrast, 2.5%);
+    box-shadow: $box-shadow--secondary;
+    transition: $transition-normal;
+    position: absolute;
+    bottom: 0;
+    padding: 1rem 2rem;
+    @include font--secondary;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+    &:hover {
+      box-shadow: $box-shadow--secondaryClicked;
+      background: darken($background-contrast, 5%);
+    }
+
+    &.-active {
+      color: $color-green;
+
+      &:hover {
+        box-shadow: $box-shadow--secondary;
+        background: $background-contrast;
+        cursor: not-allowed;
+      }
     }
   }
 }

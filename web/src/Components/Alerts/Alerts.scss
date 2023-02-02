@@ -11,6 +11,10 @@
   display: flex;
   flex-direction: column;
 
+  @media #{$mobile-down} {
+    margin-bottom: 5rem;
+  }
+
   &__alert {
     @include slide-in-out-animation();
     @include font--primary(500);
