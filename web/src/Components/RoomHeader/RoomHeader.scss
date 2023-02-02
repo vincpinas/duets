@@ -1,3 +1,6 @@
+@import "../../Scss/Mixins";
+@import "../../Scss/Variables";
+
 .c-roomheader {
   display: flex;
   width: 100%;
@@ -5,6 +8,11 @@
 
   &__item {
     margin: 0rem 1rem 1rem 0rem;
+    @include font--secondary;
+
+    &Highlight {
+      color: $background-contrast;
+    }
   }
 
   &__status {
