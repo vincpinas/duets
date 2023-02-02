@@ -9,8 +9,8 @@ export class RoomConfig {
 
   constructor() {
     this.max_players = 15;
-    this.min_players = 6;
-    this.start_delay = 20000;
+    this.min_players = 3;
+    this.start_delay = 5000;
     this.questions_lists = questions_lists;
   }
 

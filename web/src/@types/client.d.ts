@@ -40,6 +40,7 @@ interface LanguageProviderInitialState {
 
 interface WaitingRoomProps {
   roomData: GameData | undefined;
+  socket: Socket;
 }
 
 interface RoomListProps {

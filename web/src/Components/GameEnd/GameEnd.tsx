@@ -1,8 +1,11 @@
 import { GameRoomProps } from "../../@types/client";
 import Crown from "../Crown/Crown";
+import { useLanguageContext } from "../Language/LanguageProvider";
 import "./GameEnd.scss";
 
 function GameEnd({ roomData }: GameRoomProps) {
+  const { dict } = useLanguageContext();
+  
   return (
     <div className="c-gameend">
       {roomData.winners ?
@@ -14,8 +17,8 @@ function GameEnd({ roomData }: GameRoomProps) {
                 <span>{roomData.winners[1]?.name}</span>
               </div>
               <div className="c-gameend__stageOutline">
-                <span>2nd</span>
-                <span>Score: {roomData.winners[1]?.score}</span>
+                <span>{dict.game_end.second}</span>
+                <span>{dict.game_end.score}: {roomData.winners[1]?.score}/{roomData.questions.questions.length}</span>
               </div>
             </li>
             : null}
@@ -26,8 +29,8 @@ function GameEnd({ roomData }: GameRoomProps) {
                 <span>{roomData.winners[0]?.name}</span>
               </div>
               <div className="c-gameend__stageOutline">
-                <span>1st</span>
-                <span>Score: {roomData.winners[0]?.score}</span>
+                <span>{dict.game_end.first}</span>
+                <span>{dict.game_end.score}: {roomData.winners[0]?.score}/{roomData.questions.questions.length}</span>
               </div>
             </li>
             : null}
@@ -38,8 +41,8 @@ function GameEnd({ roomData }: GameRoomProps) {
                 <span>{roomData.winners[2]?.name}</span>
               </div>
               <div className="c-gameend__stageOutline">
-                <span>3rd</span>
-                <span>Score: {roomData.winners[2]?.score}</span>
+                <span>{dict.game_end.third}</span>
+                <span>{dict.game_end.score}: {roomData.winners[2]?.score}/{roomData.questions.questions.length}</span>
               </div>
             </li>
             : null}

@@ -7,7 +7,7 @@ function RoomHeader({ roomData }: RoomHeaderProps) {
   const { dict } = useLanguageContext();
   const [dots, setDots] = useState("");
   const dotsMove = (dots: string) => {
-    if (dots.length <= 2) setDots(dots + ".")
+    if (dots.length <= 1) setDots(dots + ".")
     else setDots("")
   }
   const statusString = (s: number) => {
@@ -34,15 +34,22 @@ function RoomHeader({ roomData }: RoomHeaderProps) {
 
   return (
     <header className='c-roomheader'>
-      <p className='c-roomheader__item'>
-        {roomData ? roomData.id : null}
-      </p>
-      <p className='c-roomheader__item'>
-        {roomData ? `${dict.room.players}: ${roomData.users.length} / ${roomData.max_players}` : null}
-      </p>
-      <p className='c-roomheader__item c-roomheader__status'>
-        {roomData ? `${statusString(roomData.status)}${dots}` : null}
-      </p>
+      {roomData ?
+        <>
+          <p className='c-roomheader__item'>
+            {dict.room.room} ID: <span className='c-roomheader__itemHighlight'>{roomData.id}</span>
+          </p>
+          <p className='c-roomheader__item'>
+            {dict.room.players}: <span className='c-roomheader__itemHighlight'>{roomData.users.length} / {roomData.max_players}</span>
+          </p>
+          <p className='c-roomheader__item'>
+            {dict.room.quiz}: <span className='c-roomheader__itemHighlight'>{roomData.questions.name}</span>
+          </p>
+          <p className='c-roomheader__item c-roomheader__status'>
+            {statusString(roomData.status)}<span>{dots}</span>
+          </p>
+        </>
+        : null}
     </header>
   )
 }

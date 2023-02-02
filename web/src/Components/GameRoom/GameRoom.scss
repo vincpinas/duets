@@ -27,6 +27,8 @@
     background-color: rgba($background, 0.1);
     border: 2px solid rgba(darken($background, 15%), 0.2);
     transition: $transition-fast;
+    line-height: 20px;
+    text-align: center;
     
     &:hover {
       background-color: rgba($background, 0.3);

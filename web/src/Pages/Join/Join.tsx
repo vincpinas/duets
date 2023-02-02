@@ -42,10 +42,6 @@ function Join() {
       .then((data: ServerInfo) => setServer(data));
 
     }, [])
-    console.log(server)
-
-
-
 
   const submit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

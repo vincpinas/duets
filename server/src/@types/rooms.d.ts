@@ -24,4 +24,5 @@ export interface IRoom {
   start_delay: number;
   winners?: IUser[];
   users_done?: string[];
+  users_ready?: string[];
 }

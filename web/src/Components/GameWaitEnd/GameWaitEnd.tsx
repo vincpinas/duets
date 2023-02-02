@@ -1,11 +1,14 @@
 import { GameRoomProps } from "../../@types/client";
+import { useLanguageContext } from "../Language/LanguageProvider";
 import "./GameWaitEnd.scss";
 
 function GameWaitEnd({ roomData, socket }: GameRoomProps) {
+  const { dict } = useLanguageContext();
+
   return (
     <div className="c-gamewaitend">
-      <h3>Please wait for the other players to finish before we look at the results!</h3>
-      <button>Players Finished: <span>{ roomData?.users_done.length }</span></button>
+      <h3>{dict.game_end_wait.please_wait}</h3>
+      <button>{dict.game_end_wait.finished}: <span>{ roomData?.users_done.length }</span></button>
     </div>
   )
 }
