@@ -15,7 +15,7 @@ function GameEnd({ roomData }: GameRoomProps) {
               </div>
               <div className="c-gameend__stageOutline">
                 <span>2nd</span>
-                <span>Score: {roomData.winners[1]?.score}</span>
+                <span>Score: {roomData.winners[1]?.score}/{roomData.questions.questions.length}</span>
               </div>
             </li>
             : null}
@@ -27,7 +27,7 @@ function GameEnd({ roomData }: GameRoomProps) {
               </div>
               <div className="c-gameend__stageOutline">
                 <span>1st</span>
-                <span>Score: {roomData.winners[0]?.score}</span>
+                <span>Score: {roomData.winners[0]?.score}/{roomData.questions.questions.length}</span>
               </div>
             </li>
             : null}
@@ -39,7 +39,7 @@ function GameEnd({ roomData }: GameRoomProps) {
               </div>
               <div className="c-gameend__stageOutline">
                 <span>3rd</span>
-                <span>Score: {roomData.winners[2]?.score}</span>
+                <span>Score: {roomData.winners[2]?.score}/{roomData.questions.questions.length}</span>
               </div>
             </li>
             : null}
