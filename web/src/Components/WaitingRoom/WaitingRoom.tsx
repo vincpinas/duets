@@ -5,7 +5,7 @@ import RoomHeader from '../RoomHeader/RoomHeader';
 import './WaitingRoom.scss'
 
 function WaitingRoom({ roomData, socket }: WaitingRoomProps) {
-  const { createAlert, clearAlerts } = useLanguageContext();
+  const { createAlert, clearAlerts, dict } = useLanguageContext();
   const [ready, setReady] = useState(false);
   const readyHandle = () => {
     socket.emit('user-ready', { roomId: roomData?.id }, (bool: boolean) => setReady(bool));
@@ -15,11 +15,11 @@ function WaitingRoom({ roomData, socket }: WaitingRoomProps) {
     setTimeout(() => {
       if (roomData) {
         if (roomData?.min_players - roomData?.users.length > 0) {
-          createAlert(`Waiting for ${roomData?.min_players - roomData?.users.length} more players`)
+          createAlert(`${dict.room.waiting_for} ${roomData?.min_players - roomData?.users.length} ${dict.room.more_players}`)
         } else if(roomData?.min_players - roomData?.users.length <= 0 && roomData.status === 0) {
-          createAlert(`Waiting for ${roomData?.users.length - roomData?.users_ready.length } players to ready up`)
+          createAlert(`${dict.room.waiting_for} ${roomData?.users.length - roomData?.users_ready.length } ${dict.room.ready_up}`)
         } else {
-          createAlert(`Starting game in ${roomData.start_delay / 1000} seconds`)
+          createAlert(`${dict.room.starting_in} ${roomData.start_delay / 1000} ${dict.room.seconds}`)
         }
       }
       return () => clearAlerts();
@@ -42,7 +42,7 @@ function WaitingRoom({ roomData, socket }: WaitingRoomProps) {
         className={ready ? "c-waitingroom__button -active" : "c-waitingroom__button"}
         onClick={readyHandle}
       >
-        { ready ? "Let's go!": "Ready?"}
+        { ready ? `${dict.room.go}`: `${dict.room.ready}`}
       </button>
     </div>
   )

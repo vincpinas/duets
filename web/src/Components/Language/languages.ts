@@ -53,7 +53,14 @@ export const translations = {
       running: "Running",
       players: "Players",
       room: "Room",
-      quiz: "Selected Quiz"
+      quiz: "Selected Quiz",
+      ready: "Ready?",
+      go: "Let's go!",
+      waiting_for: "Waiting for",
+      more_players: "more players",
+      ready_up: "players to ready up",
+      starting_in: "Starting game in",
+      seconds: "seconds",
     },
     game_end: {
       first: "1st",
@@ -85,7 +92,14 @@ export const translations = {
       running: "Lopend",
       players: "Spelers",
       room: "Kamer",
-      quiz: "Geselecteerde Quiz"
+      quiz: "Geselecteerde Quiz",
+      ready: "Klaar voor?",
+      go: "Let's go!",
+      waiting_for: "Wachten op",
+      more_players: "meer spelers",
+      ready_up: "spelers om zich klaar te maken",
+      starting_in: "Spel begint in",
+      seconds: "seconden",
     },
     game_end: {
       first: "1e",
@@ -117,7 +131,14 @@ export const translations = {
       running: "Funcionamiento",
       players: "Jugadores",
       room: "Habitación",
-      quiz: "Cuestionario Seleccionado"
+      quiz: "Cuestionario Seleccionado",
+      ready: "¿Listo?",
+      go: "¡Vamos!",
+      waiting_for: "Esperando",
+      more_players: "mas jugadores",
+      ready_up: "jugadores a prepararse",
+      starting_in: "Partida inicial en",
+      seconds: "segundos",
     },
     game_end: {
       first: "1º",
