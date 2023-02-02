@@ -52,6 +52,18 @@ export const translations = {
       start: "Starting",
       running: "Running",
       players: "Players",
+      room: "Room",
+      quiz: "Selected Quiz"
+    },
+    game_end: {
+      first: "1st",
+      second: "2nd",
+      third: "3rd",
+      score: "Score",
+    },
+    game_end_wait: {
+      please_wait: "Please wait for the other players to finish before we look at the results!",
+      finished: "Players Finished",
     },
   },
 
@@ -72,6 +84,18 @@ export const translations = {
       start: "Starten",
       running: "Lopend",
       players: "Spelers",
+      room: "Kamer",
+      quiz: "Geselecteerde Quiz"
+    },
+    game_end: {
+      first: "1e",
+      second: "2e",
+      third: "3e",
+      score: "Scoren",
+    },
+    game_end_wait: {
+      please_wait: "Wacht a.u.b tot de andere spelers klaar zijn voordat we naar de resultaten kijken!",
+      finished: "Spelers geëindigd",
     },
   },
 
@@ -92,6 +116,18 @@ export const translations = {
       start: "Comenzar",
       running: "Funcionamiento",
       players: "Jugadores",
+      room: "Habitación",
+      quiz: "Cuestionario Seleccionado"
+    },
+    game_end: {
+      first: "1º",
+      second: "2do",
+      third: "3ro",
+      score: "Puntaje",
+    },
+    game_end_wait: {
+      please_wait: "¡Espera a que los otros jugadores terminen antes de que veamos los resultados!",
+      finished: "Jugadores terminados",
     },
   }
 }

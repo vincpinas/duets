@@ -37,16 +37,16 @@ function RoomHeader({ roomData }: RoomHeaderProps) {
       {roomData ?
         <>
           <p className='c-roomheader__item'>
-            Room ID: <span className='c-roomheader__itemHighlight'>{roomData.id}</span>
+            {dict.room.room} ID: <span className='c-roomheader__itemHighlight'>{roomData.id}</span>
           </p>
           <p className='c-roomheader__item'>
             {dict.room.players}: <span className='c-roomheader__itemHighlight'>{roomData.users.length} / {roomData.max_players}</span>
           </p>
           <p className='c-roomheader__item'>
-            Selected quiz: <span className='c-roomheader__itemHighlight'>{roomData.questions.name}</span>
+            {dict.room.quiz}: <span className='c-roomheader__itemHighlight'>{roomData.questions.name}</span>
           </p>
           <p className='c-roomheader__item c-roomheader__status'>
-            {statusString(roomData.status)}{dots}
+            {statusString(roomData.status)}<span>{dots}</span>
           </p>
         </>
         : null}

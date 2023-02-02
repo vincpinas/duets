@@ -6,9 +6,14 @@
   width: 100%;
   flex-direction: row;
 
+  @media #{$mobile-down} {
+    flex-wrap: wrap;
+  }
+
   &__item {
     margin: 0rem 1rem 1rem 0rem;
     @include font--secondary;
+    width: fit-content;
 
     &Highlight {
       color: $background-contrast;
@@ -18,6 +23,17 @@
   &__status {
     margin-left: auto;
     margin-right: 0;
-    width: 4rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    span {
+      left: 100%;
+      position: absolute;
+    }
+
+    @media #{$mobile-down} {
+      margin-left: unset;
+    }
   }
 }
