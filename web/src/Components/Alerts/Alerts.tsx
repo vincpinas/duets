@@ -7,7 +7,12 @@ function Alerts({ alerts }: AlertsProps) {
     <div className="c-alerts">
       {alerts.map((alert) => {
         return (
-          <span key={alert.id} className="c-alerts__alert">{alert.text}</span>
+          <span
+            key={alert.id}
+            className={alert.type && alert.type === "error" ? "c-alerts__alert -error" : "c-alerts__alert"}
+          >
+            {alert.text}
+          </span>
         )
       })}
     </div>

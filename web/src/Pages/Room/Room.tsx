@@ -9,11 +9,16 @@ import { useLanguageContext } from "../../Components/Language/LanguageProvider";
 function Room() {
   const navigate = useNavigate();
   const { room, name } = useParams();
-  const { clearAlerts, blockAlerts } = useLanguageContext();
+  const { createAlert, clearAlerts, blockAlerts } = useLanguageContext();
   const [roomData, setRoomData] = useState<GameData>();
   const joinedRef = useRef(false);
 
-  const messageHandler = (message: { type: string; message: string }) => { if (message.type === "error") navigate("/") }
+  const messageHandler = (message: { type: string; message: string }) => {
+    if (message.type === "error") {
+      navigate("/");
+      createAlert(message.message, message.type);
+    }
+  }
   const roomUpdateHandler = (info: any) => { setRoomData(info); }
   const beforeUnload = () => {
     socket.emit('user-disconnect', { roomId: room })

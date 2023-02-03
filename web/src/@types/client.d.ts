@@ -11,7 +11,7 @@ interface RubberSpanProps {
 interface alert {
   id: string;
   text: string;
-  type?: number;
+  type?: string;
 }
 
 interface language {
@@ -37,7 +37,7 @@ interface LanguageProviderInitialState {
   dict: any;
   lang: language;
   setLang: Dispatch<language>;
-  createAlert: (text: string) => void;
+  createAlert: (text: string, type?: string) => void;
   clearAlerts: () => void;
   blockAlerts: () => void;
 }

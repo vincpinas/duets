@@ -36,11 +36,11 @@ export const LanguageProvider = ({ children, lang, setLang, alerts, setAlerts }:
   }, [lang])
 
   const [createdAlertTimeout, setCreatedAlertTimeout] = useState(false);
-  const createAlert = (text: string) => {
+  const createAlert = (text: string, type?: string) => {
     if (!createdAlertTimeout) {
       setCreatedAlertTimeout(true);
       const id = uniqueId();
-      setAlerts([...alerts, { id, text }]);
+      setAlerts([...alerts, { id, text, type }]);
 
       setTimeout(() => {
         setCreatedAlertTimeout(false);
