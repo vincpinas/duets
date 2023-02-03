@@ -18,14 +18,14 @@ const questions_lists: QuestionList[] = [
         answers: [{ a: "Spaans", c: 1 }, { a: "Nederlands", c: 0 }, { a: "Russisch", c: 0 }, { a: "Chinees", c: 0 }]
       },
       {
-        question: "Hoe is colin als stage begeleider?",
+        question: "Hoe is Colin als stage begeleider?",
         answers: [{ a: "Chill", c: 1 }, { a: "Goed", c: 1 }, { a: "Streng", c: 0 }, { a: "Raar", c: 0 }]
       },
     ]
   },
   {
     name: "General",
-    description: "De standaard ervaring bij duet?",
+    description: "Mijn ervaring van duet",
     questions: [
       {
         question: "Wat is de standaard lunch bij duet?",
@@ -58,6 +58,22 @@ const questions_lists: QuestionList[] = [
       {
         question: "Wie lijkt er op Elon Musk?",
         answers: [{ a: "Vincent", c: 0 }, { a: "Niels", c: 1 }, { a: "Colin", c: 0 }, { a: "Sybren", c: 0 }]
+      },
+      {
+        question: "Wat is de beste snack tijdens een amazing friday?",
+        answers: [{ a: "Sweet thai chilli chips", c: 1 }, { a: "Sweet & salty popcorn", c: 1 }, { a: "Kaasstengels", c: 0 }]
+      },
+      {
+        question: "Wie heeft ooit 180 gegooid tijdens het darten?",
+        answers: [{ a: "Niels", c: 1 }, { a: "Sybren", c: 0 }, { a: "Colin", c: 0 }, { a: "Niemand", c: 0 }]
+      },
+      {
+        question: "Hoe heet de speaker bij Duet Digital?",
+        answers: [{ a: "Duet Deuntjes", c: 1 }, { a: "Duet Beats", c: 0 }, { a: "Duet Melodieën", c: 0 }, { a: "Duet Tunes", c: 0 }]
+      },
+      {
+        question: "Waar is Duet Digital onstaan?",
+        answers: [{ a: "Van mama en papa colin na een lange liefde volle relatie", c: 1 }, { a: "The Social Hub", c: 0 }, { a: "The Co-Lab", c: 1 }, { a: "Seinweizen Haarlem", c: 0 }]
       },
     ]
   },
