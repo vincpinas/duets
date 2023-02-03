@@ -1,4 +1,5 @@
 import { GameRoomProps } from "../../@types/client";
+import Confetti from "../Confetti/Confetti";
 import Crown from "../Crown/Crown";
 import { useLanguageContext } from "../Language/LanguageProvider";
 import "./GameEnd.scss";
@@ -8,6 +9,7 @@ function GameEnd({ roomData }: GameRoomProps) {
   
   return (
     <div className="c-gameend">
+      <Confetti delay={3000} />
       {roomData.winners ?
         <ul className="c-gameend__stage">
           {roomData.winners[1] ?

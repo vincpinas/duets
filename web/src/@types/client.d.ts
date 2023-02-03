@@ -14,6 +14,10 @@ interface alert {
   type?: string;
 }
 
+interface ConfettiProps {
+  delay?: number;
+}
+
 interface language {
   lang: string; // Language name
   abbreviation: string; // Language code
