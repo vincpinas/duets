@@ -97,7 +97,7 @@
 
   opacity: 0;
   scale: 5;
-  animation: slam 1s cubic-bezier(.57,.6,1,.42) $delay forwards;
+  animation: slam 1s ease-in-out $delay forwards;
 }
 
 
